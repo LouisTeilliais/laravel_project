@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sirop', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_sirop');
+        Schema::dropIfExists('sirop');
     }
 };
