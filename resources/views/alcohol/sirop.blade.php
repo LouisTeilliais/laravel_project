@@ -16,8 +16,12 @@
                 <th> name </th>
             </tr>
         </thead>
-       
-
+        <tbody>
+       @foreach($sirop as $sirops)
+            <td> {{  $sirops->id}}   </td>
+            <td> {{  $sirops->name}}   </td>
+        @endforeach
+        </tbody>
     </table>
 
 

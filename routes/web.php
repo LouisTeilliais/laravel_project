@@ -16,6 +16,6 @@ Route::get(
 
 Route::get(
     '/alcohol/sirop',
-    [SiropController::class, 'create']
+    [SiropController::class, 'index']
 )->name('sirop.create');
 
