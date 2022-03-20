@@ -23,6 +23,11 @@ Route::post(
     [SiropController::class, 'create']
 )->name('sirop.create');
 
+Route::get(
+    '/alcohol/{id}/sirop',
+    [SiropController::class, 'delete']
+)->name('sirop.delete');
+
 
 //Softs (sans alcohol)
 Route::get(

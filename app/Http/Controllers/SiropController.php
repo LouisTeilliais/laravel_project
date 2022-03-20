@@ -24,6 +24,9 @@ class SiropController extends Controller
 
     }
 
-
+    public function delete($id){
+        $sirop = Sirop::destroy($id); 
+        return redirect() -> route('sirop.index');
+    }
 
 }

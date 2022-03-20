@@ -15,6 +15,7 @@
             <tr>
                 <th> id </th>
                 <th> name </th>
+                <th> Supprimer </th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,7 @@
                 <td> {{  $sirops->id}}   </td>
                 <td> {{  $sirops->name}}   </td>
 
-                <td> <button type="submit">Supprimer</button> </td>
+                <td> <a type="submit" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a> </td>
             </tr>
         @endforeach
         </tbody>
