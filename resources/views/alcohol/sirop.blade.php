@@ -7,6 +7,7 @@
     <title>Ajouter Sirop</title>
 </head>
 <body>
+    <a href=" {{ route('home')}}">Retour au menu</a>
     <h1>Sirop</h1>
 
     <table border=1> 
@@ -18,15 +19,18 @@
         </thead>
         <tbody>
        @foreach($sirop as $sirops)
+        <tr>
             <td> {{  $sirops->id}}   </td>
             <td> {{  $sirops->name}}   </td>
+        </tr>
         @endforeach
         </tbody>
     </table>
 
 
     <form action=" {{ route('sirop.create') }}" method="POST">
-        <input type="text" name="add">
+        @csrf
+        <input type="text" name="name">
         <button type="submit" > Ajouter sirop </button>
     </form>
 

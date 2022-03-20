@@ -19,10 +19,9 @@ class SiropController extends Controller
     public function create(Request $request){
         
         $sirop = new Sirop();
-        $sirop ->name = $request->get("add");
+        $sirop ->name = $request->get("name");
         $sirop->save();
-
-        // return redirect() -> route("alcohol.sirop");
+        return redirect() -> route("sirop.index");
 
     }
 
