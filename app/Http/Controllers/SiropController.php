@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sirop;
 
-
-
 class SiropController extends Controller
 {
     public function index(){
@@ -19,11 +17,13 @@ class SiropController extends Controller
     public function create(Request $request){
         
         $sirop = new Sirop();
-        $sirop ->name = $request->get("add");
+        $sirop ->name = $request->get('add');
         $sirop->save();
 
-        // return redirect() -> route("alcohol.sirop");
+        return redirect() -> route("sirop.index");
 
     }
+
+
 
 }

@@ -12,7 +12,6 @@ class Sirop extends Model
     protected $table = "sirop";
 
     protected $fillable = [
-
         "name"
     ];
 }

@@ -10,5 +10,6 @@
     <h1> Alcohol Project</h1>
 
     <a href=" {{ route('sirop.index')}}">Voir les Sirops</a>
+    <a href=" {{ route('sirop.index')}}">Voir les Alcools</a>
 </body>
 </html>

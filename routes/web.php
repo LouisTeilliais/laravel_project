@@ -6,7 +6,7 @@ use App\Http\Controllers\SiropController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("home");
 
 Route::get(
     '/alcohol/sirop',
@@ -14,8 +14,8 @@ Route::get(
 )->name('sirop.index');
 
 
-Route::get(
+Route::post(
     '/alcohol/sirop',
-    [SiropController::class, 'index']
+    [SiropController::class, 'create']
 )->name('sirop.create');
 
