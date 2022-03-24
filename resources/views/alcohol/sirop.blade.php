@@ -16,6 +16,7 @@
                 <th> id </th>
                 <th> name </th>
                 <th> Supprimer </th>
+                <th> Modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                 <td> {{  $sirops->name}}   </td>
 
                 <td> <a type="submit" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a> </td>
+                <td><a type="submit" id="update" href="{{ route('sirop.update') }}">Modifier</a></td>
             </tr>
         @endforeach
         </tbody>
@@ -36,7 +38,6 @@
         <input type="text" name="add">
         <button type="submit" > Ajouter sirop </button>
     </form>
-
 
 </body>
 </html>

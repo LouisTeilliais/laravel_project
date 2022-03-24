@@ -28,13 +28,18 @@ Route::get(
     [SiropController::class, 'delete']
 )->name('sirop.delete');
 
+Route::put(
+    '/alcohol/{id}/sirop',
+    [SiropController::class, 'update']
+)->name('sirop.update');
 
-//Softs (sans alcohol)
+
+
+//Softs (sans alcool)
 Route::get(
     '/alcohol/softs',
     [SoftsController::class, 'index']
 )->name('softs.index');
-
 
 Route::post(
     '/alcohol/softs',
@@ -45,6 +50,8 @@ Route::get(
     '/alcohol/{id}/softs',
     [SoftsController::class, 'delete']
 )->name('softs.delete');
+
+
 
 // Route::get(
 //     '/alcohol/{id}/softs',

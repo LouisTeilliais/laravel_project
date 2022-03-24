@@ -29,4 +29,13 @@ class SiropController extends Controller
         return redirect() -> route('sirop.index');
     }
 
+    public function update(Request $request, $id){
+
+        $sirop = Sirop::findOrFail($id);
+        $sirop->name = $request->get('name');
+        $sirop->save();
+
+        return redirect()->route('sirop.index');
+    }
+
 }
