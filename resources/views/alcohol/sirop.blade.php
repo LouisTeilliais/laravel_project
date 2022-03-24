@@ -7,6 +7,7 @@
     <title>Ajouter Sirop</title>
 </head>
 <body>
+    <a href=" {{ route('home')}}">Retourner à l'accueil</a>
     <h1>Sirop</h1>
 
     <table border=1> 
@@ -14,14 +15,17 @@
             <tr>
                 <th> id </th>
                 <th> name </th>
+                <th> Supprimer </th>
             </tr>
         </thead>
         <tbody>
-       @foreach($sirop as $sirops)
-       <tr>
-            <td> {{  $sirops->id}}   </td>
-            <td> {{  $sirops->name}}   </td>
-        </tr>
+        @foreach($sirop as $sirops)
+            <tr>
+                <td> {{  $sirops->id}}   </td>
+                <td> {{  $sirops->name}}   </td>
+
+                <td> <a type="submit" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a> </td>
+            </tr>
         @endforeach
         </tbody>
     </table>

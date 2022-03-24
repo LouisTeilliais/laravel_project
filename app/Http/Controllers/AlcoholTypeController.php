@@ -29,5 +29,15 @@ class AlcoholTypeController extends Controller
         $type = AlcoholType::destroy($id); 
         return redirect() -> route('type.index');
     }
+
+
+    public function update(Request $request, $id){
+
+        $type = AlcoholType::findOrFail($id);
+        $type->name = $request->get('add');
+        $type->save();
+
+        return redirect()->route('type.index');
+    }
 }
 

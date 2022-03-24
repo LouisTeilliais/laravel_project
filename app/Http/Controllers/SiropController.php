@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sirop;
 
-
-
 class SiropController extends Controller
 {
     public function index(){
@@ -24,6 +22,11 @@ class SiropController extends Controller
 
         return redirect() -> route("sirop.index");
 
+    }
+
+    public function delete($id){
+        $sirop = Sirop::destroy($id); 
+        return redirect() -> route('sirop.index');
     }
 
 }
