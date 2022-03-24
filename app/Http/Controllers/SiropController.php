@@ -32,7 +32,7 @@ class SiropController extends Controller
     public function update(Request $request, $id){
 
         $sirop = Sirop::findOrFail($id);
-        $sirop->name = $request->get('name');
+        $sirop->name = $request->get('add');
         $sirop->save();
 
         return redirect()->route('sirop.index');

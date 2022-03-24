@@ -26,14 +26,16 @@ class SoftsController extends Controller
     }
 
     public function delete($id){
-        $softs = Softs::destroy($id); // soit sa le trouve est créer un objet Softs sinon ça met une erreur
+        $softs = Softs::destroy($id); 
         return redirect() -> route('softs.index');
     }
 
-    // public function modifier($id){
+    public function update(Request $request, $id){
 
-    //     $softs = Softs::findOrFail($id);
-    //     return view("alcohol.modifier", compact("softs"));
-    // }
+        $softs = Softs::findOrFail($id);
+        $softs->name = $request->get('name2');
+        $softs->save();
+        return redirect() -> route('softs.index');
+    }
 
 }

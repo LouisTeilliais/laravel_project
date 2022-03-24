@@ -51,10 +51,8 @@ Route::get(
     [SoftsController::class, 'delete']
 )->name('softs.delete');
 
-
-
-// Route::get(
-//     '/alcohol/{id}/softs',
-//     [SoftsController::class, 'modifier']
-// )->name('softs.modifier');
+Route::put(
+    '/alcohol/{id}/softs',
+    [SoftsController::class, 'update']
+)->name('softs.update');
 
