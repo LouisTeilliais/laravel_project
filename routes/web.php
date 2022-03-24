@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SiropController;
 use App\Http\Controllers\SoftsController;
+use App\Http\Controllers\FruitsController;
 
 
 //Menu des alcohols
@@ -56,3 +57,23 @@ Route::put(
     [SoftsController::class, 'update']
 )->name('softs.update');
 
+//Fruits
+Route::get(
+    '/alcohol/fruits',
+    [FruitsController::class, 'index']
+)->name('fruits.index');
+
+Route::post(
+    '/alcohol/fruits',
+    [FruitsController::class, 'create']
+)->name('fruits.create');
+
+Route::get(
+    '/alcohol/{id}/fruits',
+    [FruitsController::class, 'delete']
+)->name('fruits.delete');
+
+Route::put(
+    '/alcohol/{id}/fruits',
+    [FruitsController::class, 'update']
+)->name('fruits.update');

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter Softs</title>
+    <title>Ajouter fruits</title>
 </head>
 <body>
     <a href=" {{ route('home')}}">Retour au menu</a>
-    <h1>Softs</h1>
-    @if(!is_null($softs) && !empty($softs))
-        @foreach($softs as $soft)
+    <h1>fruits</h1>
+    @if(!is_null($fruits) && !empty($fruits))
+        @foreach($fruits as $fruit)
             <table border=1> 
                 <thead>
                     <tr>
@@ -21,27 +21,27 @@
                 </thead>
                 <tbody>
                             <tr>
-                                <td> {{  $soft->id}}   </td>
-                                <td> {{  $soft->name}}   </td>
+                                <td> {{  $fruit->id}}   </td>
+                                <td> {{  $fruit->name}}   </td>
                                 <td>
-                                    {{-- <a id="mod" href="{{route('softs.modifier', $soft->id )}}">Modifier</a> --}}
-                                    <a id="del" href="{{route('softs.delete', $soft->id )}}">Supprimer</a>
+                                    {{-- <a id="mod" href="{{route('fruits.modifier', $fruit->id )}}">Modifier</a> --}}
+                                    <a id="del" href="{{route('fruits.delete', $fruit->id )}}">Supprimer</a>
                                 </td>
                             </tr>
                 </tbody>
             </table>
-            <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
+            <form action=" {{ route('fruits.update', $fruit->id) }}" method="POST">
                 @csrf
                 @method("PUT")
-                <input type="text" name="name2" value="{{$soft->name}}">
-                <button type="submit" > Modifier boisson soft </button>
+                <input type="text" name="fruit" value="{{$fruit->name}}">
+                <button type="submit" > Modifier boisson fruit </button>
             </form>
         @endforeach
     @endif
-    <form action=" {{ route('softs.create') }}" method="POST">
+    <form action=" {{ route('fruits.create') }}" method="POST">
         @csrf
-        <input type="text" name="name2">
-        <button type="submit" > Ajouter boisson soft </button>
+        <input type="text" name="fruit">
+        <button type="submit" > Ajouter boisson fruit </button>
     </form>
 
 <script>
