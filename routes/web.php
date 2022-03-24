@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiropController;
 use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
+use App\Http\Controllers\GlassesController;
 
 
 //Menu des alcohols
@@ -78,3 +79,29 @@ Route::get(
 //     [SoftsController::class, 'modifier']
 // )->name('softs.modifier');
 
+
+
+// Glasses
+
+Route::get(
+    '/alcohol/glasse',
+    [GlassesController::class, 'index']
+)->name('glasse.index');
+
+
+Route::post(
+    'alcohol/glasse',
+    [GlassesController::class, 'create']
+)->name('glasse.create');
+
+
+Route::get(
+    '/alcohol/{id}/glasse',
+    [GlassesController::class, 'delete']
+)->name('glasse.delete');
+
+
+Route::put(
+    '/alcohol/{id}/glasse',
+    [GlassesController::class, 'update']
+)->name('glasse.update');
