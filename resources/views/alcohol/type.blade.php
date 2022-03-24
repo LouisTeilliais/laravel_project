@@ -14,6 +14,7 @@
             <tr>
                 <th> id </th>
                 <th> name </th>
+                <th> delete </th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
        <tr>
             <td> {{  $types->id}}   </td>
             <td> {{  $types->name}}   </td>
+            <td><a id="del" href="{{route('type.delete', $types->id )}}">Supprimer</a></td>
         </tr>
         @endforeach
         </tbody>
@@ -32,6 +34,16 @@
         <input type="text" name="add">
         <button type="submit" > Ajouter type alcool </button>
     </form>
+
+
+<script>
+    let del = document.querySelectorAll("#del");
+    del.forEach(element => {
+        element.addEventListener("click", function(event){
+            alert("Vous êtes sur de vouloir supprimer ?")
+        });
+    });
+</script>
 
 
 </body>

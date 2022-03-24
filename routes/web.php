@@ -31,3 +31,9 @@ Route::post(
     'alcohol/type',
     [AlcoholTypeController::class, 'create']
 )->name('type.create');
+
+
+Route::get(
+    '/alcohol/{id}/type',
+    [AlcoholTypeController::class, 'delete']
+)->name('type.delete');

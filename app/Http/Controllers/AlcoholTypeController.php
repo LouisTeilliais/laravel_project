@@ -25,5 +25,9 @@ class AlcoholTypeController extends Controller
 
     }
 
+    public function delete($id){
+        $type = AlcoholType::destroy($id); 
+        return redirect() -> route('type.index');
+    }
 }
 
