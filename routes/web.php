@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SiropController;
+use App\Http\Controllers\AlcoholTypeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,8 +15,19 @@ Route::get(
 )->name('sirop.index');
 
 
-Route::get(
+Route::post(
     '/alcohol/sirop',
-    [SiropController::class, 'index']
+    [SiropController::class, 'create']
 )->name('sirop.create');
 
+
+Route::get(
+    '/alcohol/type',
+    [AlcoholTypeController::class, 'index']
+)->name('type.index');
+
+
+Route::post(
+    'alcohol/type',
+    [AlcoholTypeController::class, 'create']
+)->name('type.create');

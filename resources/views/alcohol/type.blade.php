@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter Sirop</title>
+    <title>Ajouter type alcool</title>
 </head>
 <body>
-    <h1>Sirop</h1>
+    <h1>Type d'alcool</h1>
 
     <table border=1> 
         <thead>
@@ -17,20 +17,20 @@
             </tr>
         </thead>
         <tbody>
-       @foreach($sirop as $sirops)
+       @foreach($type as $types)
        <tr>
-            <td> {{  $sirops->id}}   </td>
-            <td> {{  $sirops->name}}   </td>
+            <td> {{  $types->id}}   </td>
+            <td> {{  $types->name}}   </td>
         </tr>
         @endforeach
         </tbody>
     </table>
 
 
-    <form action=" {{ route('sirop.create') }}" method="POST">
+    <form action=" {{ route('type.create') }}" method="POST">
         @csrf
         <input type="text" name="add">
-        <button type="submit" > Ajouter sirop </button>
+        <button type="submit" > Ajouter type alcool </button>
     </form>
 
 
