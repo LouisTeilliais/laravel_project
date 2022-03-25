@@ -15,6 +15,7 @@
                     <tr>
                         <th> id </th>
                         <th> name </th>
+                        <th> Image </th>
                         <th> delete </th>
                     </tr>
                 </thead>
@@ -23,6 +24,7 @@
             <tr>
                     <td> {{  $glasses->id}}   </td>
                     <td> {{  $glasses->name}}   </td>
+                    <td><img src="{{ asset('storage/images/' . $glasses->image_url) }}"/></td>
                     <td><a id="del" href="{{route('glasse.delete', $glasses->id )}}">Supprimer</a></td>
                 </tr>
                 </tbody>
@@ -36,9 +38,10 @@
         @endforeach
     @endif
 
-    <form action=" {{ route('glasse.create') }}" method="POST">
+    <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="add">
+        <input type="file" name="image" >
         <button type="submit" > Ajouter un verre </button>
     </form>
 
@@ -50,7 +53,6 @@
             alert("Vous êtes sur de vouloir supprimer ?")
         });
     });
-
 
 </script>
 

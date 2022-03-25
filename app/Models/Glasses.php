@@ -13,6 +13,7 @@ class Glasses extends Model
 
     protected $fillable = [
 
-        "name"
+        "name",
+        "image_url"
     ];
 }
