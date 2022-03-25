@@ -24,7 +24,7 @@
                                 <td> {{  $soft->id}}   </td>
                                 <td> {{  $soft->name}}   </td>
                                 <td>
-                                    <!-- {{-- <a id="mod" href="{{route('softs.modifier', $soft->id )}}">Modifier</a> --}} -->
+                                    {{-- <a id="mod" href="{{route('softs.modifier', $soft->id )}}">Modifier</a> --}}
                                     <a id="del" href="{{route('softs.delete', $soft->id )}}">Supprimer</a>
                                 </td>
                             </tr>
@@ -32,7 +32,7 @@
             </table>
             <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
                 @csrf
-                @method('PUT')
+                @method("PUT")
                 <input type="text" name="name2" value="{{$soft->name}}">
                 <button type="submit" > Modifier boisson soft </button>
             </form>

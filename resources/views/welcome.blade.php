@@ -13,5 +13,6 @@
 
     <a href=" {{ route('sirop.index')}}">Voir les Sirops</a>
     <a href=" {{ route('softs.index')}}">Voir les softs</a>
+    <a href=" {{ route('fruits.index')}}">Voir les fruits</a>
 </body>
 </html>
