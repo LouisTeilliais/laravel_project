@@ -12,6 +12,7 @@ class Fruits extends Model
     protected $table = "fruits";
 
     protected $fillable = [
-        "name"
+        "name",
+        "image_url"
     ];
 }

@@ -77,3 +77,8 @@ Route::put(
     '/alcohol/{id}/fruits',
     [FruitsController::class, 'update']
 )->name('fruits.update');
+
+// Route::post(
+//     '/alcohol/{id}/fruits',
+//     [FruitsController::class, 'save']
+// )->name('fruits.save');

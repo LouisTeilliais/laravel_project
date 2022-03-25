@@ -16,6 +16,7 @@
                     <tr>
                         <th> id </th>
                         <th> name </th>
+                        <th> Image </th>
                         <th> button </th>
                     </tr>
                 </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td> {{  $fruit->id}}   </td>
                                 <td> {{  $fruit->name}}   </td>
+                                <td> {{$fruit->image_url}}<img src="{{ asset('storage/images/' . $fruit->image_url) }}"/></td>
                                 <td>
                                     {{-- <a id="mod" href="{{route('fruits.modifier', $fruit->id )}}">Modifier</a> --}}
                                     <a id="del" href="{{route('fruits.delete', $fruit->id )}}">Supprimer</a>
@@ -33,16 +35,23 @@
             <form action=" {{ route('fruits.update', $fruit->id) }}" method="POST">
                 @csrf
                 @method("PUT")
-                <input type="text" name="fruit" value="{{$fruit->name}}">
+                <input type="text" name="fruitName" value="{{$fruit->name}}">
                 <button type="submit" > Modifier boisson fruit </button>
             </form>
         @endforeach
     @endif
-    <form action=" {{ route('fruits.create') }}" method="POST">
+    <form action=" {{ route('fruits.create') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="fruit">
+        <input type="text" name="fruitName">
+        <input type="file" name="image" >
         <button type="submit" > Ajouter boisson fruit </button>
     </form>
+    
+    {{-- <form action=" {{ route('fruits.save', $fruit->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="image">
+        <button type="submit" > Add photo</button>
+    </form> --}}
 
 <script>
 let del = document.querySelectorAll("#del");
