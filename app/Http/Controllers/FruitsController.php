@@ -13,12 +13,6 @@ class FruitsController extends Controller
 
         return view("alcohol.fruits", compact("fruits"));
     }
-
-    public function saveFolder(Request $request)
-    {
-        
- 
-    }
     
     public function create(Request $request){
         

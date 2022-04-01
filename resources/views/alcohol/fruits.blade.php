@@ -24,9 +24,8 @@
                             <tr>
                                 <td> {{  $fruit->id}}   </td>
                                 <td> {{  $fruit->name}}   </td>
-                                <td> {{$fruit->image_url}}<img src="{{ asset('storage/images/' . $fruit->image_url) }}"/></td>
+                                <td><img src="{{ asset('storage/images/' . $fruit->image_url) }}"/></td>
                                 <td>
-                                    {{-- <a id="mod" href="{{route('fruits.modifier', $fruit->id )}}">Modifier</a> --}}
                                     <a id="del" href="{{route('fruits.delete', $fruit->id )}}">Supprimer</a>
                                 </td>
                             </tr>
@@ -43,7 +42,7 @@
     <form action=" {{ route('fruits.create') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="fruitName">
-        <input type="file" name="image" >
+        <input type="file" name="image">
         <button type="submit" > Ajouter boisson fruit </button>
     </form>
     
