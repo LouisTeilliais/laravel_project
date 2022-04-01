@@ -9,10 +9,13 @@ class AlcoholType extends Model
 {
     use HasFactory;
 
-    protected $table = "alcohol";
+    protected $table = "types_alcohol";
 
     protected $fillable = [
 
-        "name"
+        "name",
+        "alcohol_id"
     ];
+
+
 }

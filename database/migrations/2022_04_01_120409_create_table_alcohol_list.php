@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('degrees');
-            $table->integer('alcohol_id')->unsigned()->nullable(); 
-            $table->foreign('alcohol_id')->references('id')->on('alcohol');
+            $table->unsignedBigInteger('alcohol_id')->nullable(); 
+            $table->foreign('alcohol_id')->references('id')->on('types_alcohol');
             $table->timestamps();
         });
     }

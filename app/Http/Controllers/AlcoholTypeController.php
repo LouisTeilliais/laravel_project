@@ -4,13 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AlcoholType;
+use App\Models\AlcoholList;
 
 
 class AlcoholTypeController extends Controller
 {
     public function index(){
 
+        // $brand = AlcoholList::first();
+        // dd($brand->alcoholBrand->name);
+
+        $brand = AlcoholList::with('alcoholBrand')->get();
+        // dd($brand);
+
+
         $type = AlcoholType::all();
+
+
 
         return view("alcohol.type", compact("type"));
     }
