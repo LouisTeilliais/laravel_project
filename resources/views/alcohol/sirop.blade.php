@@ -20,25 +20,25 @@
 
     @if(!is_null($sirop) && !empty($sirop))
         @foreach($sirop as $sirops)    
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-            <div class="card text-center" style="width: 18rem;">
-                <div class="card-body">
-                <h5> Nom du sirop :  {{  $sirops->name}}   </h5>
-                <p> Id : {{$sirops->id}}</p>
-                <p> Ajouté le : {{$sirops->created_at}}</p>
-                <p> Modifié le : {{$sirops->updated_at}}</p>
-                <p> </p>
-                </div>
-                                
-                <a class="btn btn-danger" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a>
-                <form action=" {{ route('sirop.update', $sirops->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
-                <input class="form-control" type="text" name="add" value="{{$sirops->name}}">
-                
-                </form>
+        <div class="position-relative">
+            <div class="row align-items-start">
+                <div class="card text-center " style="width: 18rem;">
+                    <div class="card-body">
+                    <h5> Nom du sirop :  {{  $sirops->name}}   </h5>
+                    <p> Id : {{$sirops->id}}</p>
+                    <p> Ajouté le : {{$sirops->created_at}}</p>
+                    <p> Modifié le : {{$sirops->updated_at}}</p>
+                    <p> </p>
+                    </div>
+                                    
+                    <a class="btn btn-danger" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a>
+                    <form action=" {{ route('sirop.update', $sirops->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
+                    <input class="form-control" type="text" name="add" value="{{$sirops->name}}">
+                    
+                    </form>
                 </div>       
             </div>
         </div>
@@ -48,4 +48,8 @@
 
 
 </body>
+
+<script>
+
+</script>
 </html>

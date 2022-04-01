@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SiropController;
+use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
 use App\Http\Controllers\FruitsController;
+use App\Http\Controllers\GlassesController;
 
 
 //Menu des alcohols
@@ -36,7 +38,33 @@ Route::put(
 
 
 
-//Softs (sans alcool)
+// Types d'alcools
+Route::get(
+    '/alcohol/type',
+    [AlcoholTypeController::class, 'index']
+)->name('type.index');
+
+
+Route::post(
+    'alcohol/type',
+    [AlcoholTypeController::class, 'create']
+)->name('type.create');
+
+
+Route::get(
+    '/alcohol/{id}/type',
+    [AlcoholTypeController::class, 'delete']
+)->name('type.delete');
+
+
+Route::put(
+    '/alcohol/{id}/type',
+    [AlcoholTypeController::class, 'update']
+)->name('type.update');
+
+
+
+//Softs (sans alcohol)
 Route::get(
     '/alcohol/softs',
     [SoftsController::class, 'index']
@@ -78,7 +106,29 @@ Route::put(
     [FruitsController::class, 'update']
 )->name('fruits.update');
 
-// Route::post(
-//     '/alcohol/{id}/fruits',
-//     [FruitsController::class, 'save']
-// )->name('fruits.save');
+
+
+// Glasses
+
+Route::get(
+    '/alcohol/glasse',
+    [GlassesController::class, 'index']
+)->name('glasse.index');
+
+
+Route::post(
+    'alcohol/glasse',
+    [GlassesController::class, 'create']
+)->name('glasse.create');
+
+
+Route::get(
+    '/alcohol/{id}/glasse',
+    [GlassesController::class, 'delete']
+)->name('glasse.delete');
+
+
+Route::put(
+    '/alcohol/{id}/glasse',
+    [GlassesController::class, 'update']
+)->name('glasse.update');

@@ -11,8 +11,23 @@
 <body>
     <h1> Alcohol Project</h1>
 
-    <a href=" {{ route('sirop.index')}}">Voir les Sirops</a>
-    <a href=" {{ route('softs.index')}}">Voir les softs</a>
-    <a href=" {{ route('fruits.index')}}">Voir les fruits</a>
+    <ul>
+        <li>
+            <a href=" {{ route('sirop.index')}}">Voir les sirops</a>
+        </li>
+        <li>
+            <a href=" {{ route('softs.index')}}">Voir les softs</a>
+        </li>
+        <li>
+            <a href=" {{ route('fruits.index')}}">Voir les fruits</a>
+        </li>
+        <li>
+            <a href=" {{ route('type.index')}}">Voir les types d'alcools</a>
+        </li>
+        <li>
+            <a href=" {{ route('glasse.index')}}">Voir les types de verres</a>
+        </li>
+    </ul>
+    
 </body>
 </html>

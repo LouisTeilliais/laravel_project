@@ -19,7 +19,7 @@ class SoftsController extends Controller
     public function create(Request $request){
         
         $softs = new Softs();
-        $softs->name = $request->get("name2");
+        $softs->name = $request->get("add");
         $softs->save();
         return redirect() -> route("softs.index");
 
@@ -33,7 +33,7 @@ class SoftsController extends Controller
     public function update(Request $request, $id){
 
         $softs = Softs::findOrFail($id);
-        $softs->name = $request->get('name2');
+        $softs->name = $request->get('add');
         $softs->save();
         return redirect() -> route('softs.index');
     }
