@@ -37,7 +37,7 @@
                     @csrf
                     @method('PUT')
                     <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
-                    <input class="form-control" type="text" name="add" value="{{$fruit->name}}">
+                    <input class="form-control" type="text" name="fruitName" value="{{$fruit->name}}">
                     
                     </form>
                 </div>       

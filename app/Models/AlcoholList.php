@@ -9,12 +9,21 @@ class AlcoholList extends Model
 {
     use HasFactory;
 
-    protected $table = "alcoholList";
+
+    protected $table = "alcohol_list";
+
 
     protected $fillable = [
 
         "name", 
         "degrees",
-        
+        "alcohol_id"
+
     ];
+
+    public function alcoholBrand() {
+        return $this->belongsTo('App\Models\AlcoholType', "alcohol_id");
+    }
 }
+
+?>
