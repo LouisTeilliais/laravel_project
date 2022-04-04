@@ -39,10 +39,11 @@
                     </table>
                 @endif
             @endforeach
-            <form action=" {{ route('brand.create', $types->id) }}" method="POST">
+            <form action=" {{ route('brand.create') }}" method="POST">
                 @csrf
                 <input type="text" name="brandName">
                 <input type="number" name="degrees">
+                <input type="text" hidden name="alcoholType_id" value="{{$types->id}}">
                 <button type="submit" > Ajouter marque alcool </button>               
             </form>
         @endforeach

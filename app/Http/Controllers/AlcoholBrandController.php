@@ -17,12 +17,12 @@ class AlcoholBrandController extends Controller
         return view("alcohol.brand", compact("brand", "type"));
     }
     
-    public function create(Request $request, $id){
+    public function create(Request $request){
         
         $brand = new AlcoholList();
         $brand ->name = $request->get('brandName');
         $brand->degrees = $request->get('degrees');
-        $brand->alcohol_id = $id;
+        $brand->alcohol_id = $request->get('alcoholType_id');
         $brand->save();
 
         return redirect() -> route("brand.index");
