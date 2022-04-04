@@ -7,6 +7,8 @@ use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
 use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
+use App\Http\Controllers\AlcoholBrandController;
+
 
 
 //Menu des alcohols
@@ -132,3 +134,30 @@ Route::put(
     '/alcohol/{id}/glasse',
     [GlassesController::class, 'update']
 )->name('glasse.update');
+
+
+// Alcohol brand 
+
+
+Route::get(
+    '/alcohol/brand',
+    [AlcoholBrandController::class, 'index']
+)->name('brand.index');
+
+
+Route::post(    
+    'alcohol/brand',
+    [AlcoholBrandController::class, 'create']
+)->name('brand.create');
+
+
+Route::get(
+    '/alcohol/{id}/brand',
+    [AlcoholBrandController::class, 'delete']
+)->name('brand.delete');
+
+
+Route::put(
+    '/alcohol/{id}/brand',
+    [AlcoholBrandController::class, 'update']
+)->name('brand.update');

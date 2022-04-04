@@ -11,18 +11,10 @@ class AlcoholTypeController extends Controller
 {
     public function index(){
 
-        // $brand = AlcoholList::first();
-        // dd($brand->alcoholBrand->name);
-
-        $brand = AlcoholList::with('alcoholBrand')->get();
-        // dd($brand);
-
-
+        $brand = AlcoholList::all();
         $type = AlcoholType::all();
 
-
-
-        return view("alcohol.type", compact("type"));
+        return view("alcohol.type", compact("brand", "type"));
     }
     
     public function create(Request $request){
@@ -49,5 +41,6 @@ class AlcoholTypeController extends Controller
 
         return redirect()->route('type.index');
     }
+
 }
 

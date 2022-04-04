@@ -9,7 +9,9 @@ class AlcoholList extends Model
 {
     use HasFactory;
 
+
     protected $table = "alcohol_list";
+
 
     protected $fillable = [
 
