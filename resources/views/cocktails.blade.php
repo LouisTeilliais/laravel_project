@@ -9,13 +9,45 @@
     <title> Alcohol Project </title>
 </head>
 <body>
-    <h1> Alcohol Project</h1>
-
     <ul>
         <li>
             <a href=" {{ route('home')}}"> Retour au menu</a>
         </li>
     </ul>
+    <h1> Cocktails</h1>
+
+    <form action=" {{ route('cocktails.create') }}" method="POST">
+        @csrf
+        <input type="text" name="cocktailsName">
+        <button type="submit" class="btn btn-success"> Ajouter boisson soft </button>
+    </form>
+
+    @if(!is_null($cocktails) && !empty($cocktails))
+        @foreach($cocktails as $cocktail)
+        <div class="position-relative">
+            <div class="row align-items-start">
+                <div class="card text-center " style="width: 18rem;">
+                    <div class="card-body">
+                    <h5> Nom du cocktail :  {{  $cocktail->name}}   </h5>
+                    <p> Id : {{$cocktail->id}}</p>
+                    <p> Ajouté le : {{$cocktail->created_at}}</p>
+                    <p> Modifié le : {{$cocktail->updated_at}}</p>
+                    <p> </p>
+                    </div>
+                                    
+                    <a class="btn btn-danger" id="del" href="{{route('cocktails.delete', $cocktail->id )}}">Supprimer</a>
+                    <form action=" {{ route('cocktails.update', $cocktail->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-warning"> Modifier cocktail </button>
+                    <input class="form-control" type="text" name="cocktailsName" value="{{$cocktail->name}}">
+                    
+                    </form>
+                </div>       
+            </div>
+        </div>
+    @endforeach
+@endif 
     
 </body>
 </html>

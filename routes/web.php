@@ -172,18 +172,18 @@ Route::get(
 )->name('cocktails.index');
 
 
-// Route::post(    
-//     '/cocktails',
-//     [CocktailsController::class, 'create']
-// )->name('cocktails.create');
+Route::post(    
+    '/cocktails',
+    [CocktailsController::class, 'create']
+)->name('cocktails.create');
 
 
-// Route::get(
-//     '/cocktails',
-//     [CocktailsController::class, 'delete']
-// )->name('cocktails.delete');
+Route::get(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'delete']
+)->name('cocktails.delete');
 
-// Route::put(
-//     '/cocktails',
-//     [CocktailsController::class, 'update']
-// )->name('cocktails.update');
+Route::put(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'update']
+)->name('cocktails.update');
