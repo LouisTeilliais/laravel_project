@@ -39,7 +39,7 @@
                     </table>
                 @endif
             @endforeach
-            <form action=" {{ route('brand.create') }}" method="POST">
+            <form action=" {{ route('brand.create', $types->id ) }}" method="POST">
                 @csrf
                 <input type="text" name="brandName">
                 <input type="number" name="degrees">

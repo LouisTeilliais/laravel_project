@@ -30,6 +30,9 @@
         <li>
             <a href=" {{ route('brand.index')}}">Voir les marques d'alcool</a>
         </li>
+        <li>
+            <a href=" {{ route('cocktails.index')}}">Create cocktail </a>
+        </li>
     </ul>
     
 </body>
