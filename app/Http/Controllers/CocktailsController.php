@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cocktails;
 use App\Models\Glasses;
+use App\Models\Fruits;
 
 class CocktailsController extends Controller
 {
     public function index(){
 
-        $cocktails = Cocktails::all();
+        $cocktails = Cocktails::with('cocktailsFruits')->first();
         $glasses = Glasses::all();
+        $fruits = Fruits::first();
+
+        $cocktails->cocktailsFruits()->attach($fruits);
+
+        // dd($cocktails);
         return view("cocktails", compact("cocktails", "glasses"));
     }
     

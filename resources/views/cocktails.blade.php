@@ -18,34 +18,37 @@
 
     @if(!is_null($cocktails) && !empty($cocktails))
         @foreach($glasses as $glasse)
-            <h2> {{$glasse->name}} </h2>
+            {{-- <h2> {{$glasse->name}} </h2> --}}
             @foreach($cocktails as $cocktail)
-                @if($cocktail->glasse_id == $glasse->id)
-                    <div class="position-relative">
-                        <div class="row align-items-start">
-                            <div class="card text-center " style="width: 18rem;">
-                                <div class="card-body">
-                                <h5> Nom du cocktail :  {{  $cocktail->name}}   </h5>
-                                <p> Id : {{$cocktail->id}}</p>
-                                <p>Glasse_Id : {{$cocktail->glasse_id}}</p>
-                                <p> Ajouté le : {{$cocktail->created_at}}</p>
-                                <p> Modifié le : {{$cocktail->updated_at}}</p>
-                                <p> </p>
-                                </div>
-                                                
-                                <a class="btn btn-danger" id="del" href="{{route('cocktails.delete', $cocktail->id )}}">Supprimer</a>
-                                <form action=" {{ route('cocktails.update', $cocktail->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="g"> Modifier cocktail </button>
-                                <input class="form-control" type="text" name="cocktailsName" value="{{$cocktail->name}}">
-                                
-                                </form>
+                {{-- @if($cocktail->glasse_id == $glasse->id) --}}
+                    @foreach($cocktail->cocktailsFruits as $cocktailsFruit)
+                            <div class="position-relative">
+                                <div class="row align-items-start">
+                                    <div class="card text-center " style="width: 18rem;">
+                                        <div class="card-body">
+                                        <h5> Nom du cocktail :  {{  $cocktail->name}}   </h5>
+                                        <p> Id : {{$cocktail->id}}</p>
+                                        <p> Cocktail fruit : {{$cocktailFruit->name}}</p>
+                                        <p>Glasse_Id : {{$cocktail->glasse_id}}</p>
+                                        <p> Ajouté le : {{$cocktail->created_at}}</p>
+                                        <p> Modifié le : {{$cocktail->updated_at}}</p>
+                                        <p> </p>
+                                        </div>
+                                                        
+                                        <a class="btn btn-danger" id="del" href="{{route('cocktails.delete', $cocktail->id )}}">Supprimer</a>
+                                        <form action=" {{ route('cocktails.update', $cocktail->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="g"> Modifier cocktail </button>
+                                        <input class="form-control" type="text" name="cocktailsName" value="{{$cocktail->name}}">
+                                        
+                                        </form>
 
-                            </div>       
-                        </div>
-                    </div>
-                @endif
+                                    </div>       
+                                </div>
+                            </div>
+                    @endforeach
+                {{-- @endif --}}
             @endforeach
             <form action=" {{ route('cocktails.create') }}" method="POST">
                 @csrf
