@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cocktails_fruits', function (Blueprint $table) {
+        Schema::create('cocktails_sirop', function (Blueprint $table) {
             $table->unsignedBigInteger('cocktail_id')->nullable();
-            $table->unsignedBigInteger('fruits_id')->nullable();
-            $table->foreign('fruits_id')->references('id')->on('fruits');
+            $table->unsignedBigInteger('sirop_id')->nullable();
+            $table->foreign('sirop_id')->references('id')->on('sirop');
             $table->foreign('cocktail_id')->references('id')->on('cocktail');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cocktails_fruits');
+        Schema::dropIfExists('cocktails_sirop');
     }
 };
