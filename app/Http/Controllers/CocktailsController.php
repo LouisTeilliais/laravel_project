@@ -14,9 +14,7 @@ class CocktailsController extends Controller
         $cocktails = Cocktails::with('cocktailsFruits')->first();
         $glasses = Glasses::all();
         $fruits = Fruits::first();
-
         $cocktails->cocktailsFruits()->attach($fruits);
-
         // dd($cocktails);
         return view("cocktails", compact("cocktails", "glasses"));
     }
