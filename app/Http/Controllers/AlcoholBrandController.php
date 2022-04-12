@@ -45,4 +45,3 @@ class AlcoholBrandController extends Controller
     }
 
 }
-

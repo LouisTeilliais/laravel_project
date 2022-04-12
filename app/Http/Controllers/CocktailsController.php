@@ -11,10 +11,11 @@ class CocktailsController extends Controller
 {
     public function index(){
 
-        $cocktails = Cocktails::with('cocktailsFruits')->first();
+        // $cocktails = Cocktails::with('cocktailsFruits')->first();
+        $cocktails= Cocktails::all();
         $glasses = Glasses::all();
-        $fruits = Fruits::first();
-        $cocktails->cocktailsFruits()->attach($fruits);
+        // $fruits = Fruits::first();
+        // $cocktails->cocktailsFruits()->attach($fruits);
         // dd($cocktails);
         return view("cocktails", compact("cocktails", "glasses"));
     }
@@ -26,7 +27,6 @@ class CocktailsController extends Controller
         $cocktails ->glasse_id = $request->get('glasse_id');
         // $cocktails->alcohol_id = $request->get('alcoholType_id');
         $cocktails->save();
-
         return redirect() -> route("cocktails.index");
 
     }
