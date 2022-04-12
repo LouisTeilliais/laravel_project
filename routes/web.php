@@ -148,7 +148,7 @@ Route::get(
 
 
 Route::post(    
-    '/alcohol/{id}/brand',
+    'alcohol/brand',
     [AlcoholBrandController::class, 'create']
 )->name('brand.create');
 

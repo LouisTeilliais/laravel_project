@@ -8,45 +8,72 @@
     <title>Ajouter type alcool</title>
 </head>
 <body>
-    <a href=" {{ route('home')}}">Retour au menu</a>
 
-    <h1>Type d'alcool</h1>
-    
-    @if(!is_null($type) && !empty($type))
-        @foreach($type as $types)
-            <table border=1> 
-                <thead>
-                    <tr>
-                        <th> id </th>
-                        <th> name </th>
-                        <th> delete </th>
-                    </tr>
-                </thead>
-                <tbody>
-            
-            <tr>
-                    <td> {{  $types->id}}   </td>
-                    <td> {{  $types->name}}   </td>
-                    <td><a id="del" href="{{route('type.delete', $types->id )}}">Supprimer</a></td>
+    <div class = "container navbar" >
+            <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+            <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
+            <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
+            <a class="btn btn-light" href=" {{ route('softs.index')}}">Softs</a>
+            <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
+            <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+    </div>
+
+    <h1 class="text-center">Liste des Alcools</h1>
+
+    <div class = "container" >
+            <table class="table align-middle table-light table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <form action=" {{ route('type.create') }}" method="POST">
+                        @csrf
+                        <input type="text" placeholder="Taper un alcool" name="typeAlcohol">
+                        <button class="btn btn-success" type="submit" > Ajouter un alcool </button>
+                    </form>
                 </tr>
-                </tbody>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Ajouté à</th>
+                    <th scope="col">Mofifié à</th>
+                    <th scope="col">Supprimer</th>
+                    <th scope="col">Modifier</th>
+                </tr>
+            </thead>
+            @if(!is_null($type) && !empty($type))
+                @foreach($type as $types)    
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{$types->id}}
+                                <td>{{ $types->name}}</td>
+                                <td>
+                                    @foreach($brand as $brands)
+                                        @if($brands-> alcohol_id == $types->id)
+                                            <ul>
+                                                <li>{{ $brands->name}}</li>
+                                            </ul>
+                                        @endif
+                                @endforeach
+                                </td>
+                                
+                                <td>{{ $types->created_at}}</td>
+                                <td>{{ $types->updated_at}}</td>
+                                <td><a class="btn btn-danger" id="del" href="{{route('type.delete', $types->id )}}">Supprimer</a></td>
+                                <td> 
+                                    <form action=" {{ route('type.update', $types->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-warning"> Modifier alcool </button>
+                                        <input class="form-control" type="text" name="typeAlcohol" value="{{$types->name}}">
+                                    </form>
+                                </td>
+                            </th>
+                        </tr>
+                    </tbody>
+                @endforeach
+            @endif
             </table>
-            <form action=" {{ route('type.update', $types->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <input type="text" name="add" value="{{$types->name}}">
-                <button type="submit" > Modifier l'alcool </button>
-            </form>
-        @endforeach
-    @endif
-
-    <form action=" {{ route('type.create') }}" method="POST">
-        @csrf
-        <input type="text" name="add">
-        <button type="submit" > Ajouter type alcool </button>
-    </form>
-
-    
+        </div>  
 
 <script>
     let del = document.querySelectorAll("#del");
