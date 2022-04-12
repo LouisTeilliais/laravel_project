@@ -11,7 +11,7 @@
     <a href=" {{ route('home')}}">Retour au menu</a>
 
     <h1>Type d'alcool</h1>
-
+    
     @if(!is_null($type) && !empty($type))
         @foreach($type as $types)
             <table border=1> 

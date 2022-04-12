@@ -13,7 +13,7 @@ class AlcoholTypeController extends Controller
 
         $brand = AlcoholList::all();
         $type = AlcoholType::all();
-
+        dd($type);
         return view("alcohol.type", compact("brand", "type"));
     }
     
