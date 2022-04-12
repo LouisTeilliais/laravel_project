@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cocktails_fruits', function (Blueprint $table) {
-            $table->unsignedBigInteger('cocktail_id')->nullable();
+            $table->unsignedBigInteger('cocktails_id')->nullable();
             $table->unsignedBigInteger('fruits_id')->nullable();
             $table->foreign('fruits_id')->references('id')->on('fruits');
-            $table->foreign('cocktail_id')->references('id')->on('cocktail');
+            $table->foreign('cocktails_id')->references('id')->on('cocktails');
             $table->timestamps();
         });
     }

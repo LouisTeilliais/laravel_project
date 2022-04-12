@@ -21,18 +21,23 @@
             <h2> {{$glasse->name}} </h2>
             @foreach($cocktails as $cocktail)
                 @if($cocktail->glasse_id == $glasse->id)
-                    {{-- @foreach($cocktail->cocktailsFruits as $cocktailsFruit) --}}
                             <div class="position-relative">
                                 <div class="row align-items-start">
                                     <div class="card text-center " style="width: 18rem;">
                                         <div class="card-body">
                                         <h5> Nom du cocktail :  {{  $cocktail->name}}   </h5>
                                         <p> Id : {{$cocktail->id}}</p>
-                                        {{-- <p> Cocktail fruit : {{$cocktailFruit->name}}</p> --}}
                                         <p>Glasse_Id : {{$cocktail->glasse_id}}</p>
                                         <p> Ajouté le : {{$cocktail->created_at}}</p>
                                         <p> Modifié le : {{$cocktail->updated_at}}</p>
-                                        <p> </p>
+                                        <p> Cocktail fruit : </p>
+                                        <select class="form-select" aria-label="Default select example" >
+                                            <option selected>Select fruit</option>
+                                            @foreach($cocktail->fruits as $fruit)
+                                            <option value="{{$fruit->id}}">{{$fruit->name}}</option>
+                                            @endforeach
+                                        </select>
+
                                         </div>
                                                         
                                         <a class="btn btn-danger" id="del" href="{{route('cocktails.delete', $cocktail->id )}}">Supprimer</a>
@@ -47,7 +52,6 @@
                                     </div>       
                                 </div>
                             </div>
-                    {{-- @endforeach --}}
                 @endif
             @endforeach
             <form action=" {{ route('cocktails.create') }}" method="POST">

@@ -11,11 +11,8 @@ class CocktailsController extends Controller
 {
     public function index(){
 
-        // $cocktails = Cocktails::with('cocktailsFruits')->first();
         $cocktails= Cocktails::all();
         $glasses = Glasses::all();
-        // $fruits = Fruits::first();
-        // $cocktails->cocktailsFruits()->attach($fruits);
         // dd($cocktails);
         return view("cocktails", compact("cocktails", "glasses"));
     }

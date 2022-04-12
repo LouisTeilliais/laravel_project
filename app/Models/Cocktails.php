@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Fruits;
 
 class Cocktails extends Model
 {
@@ -20,7 +21,7 @@ class Cocktails extends Model
         return $this->belongsTo('App\Models\Glasses', "glasse_id");
     }
 
-    // public function cocktailsFruits(){
-    //     return $this->belongsToMany('App\Models\Fruits', 'cocktails_fruits', 'cocktail_id', 'fruits_id');
-    // }
+    public function fruits(){
+        return $this->belongsToMany(Fruits::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cocktails;
 
 class Fruits extends Model
 {
@@ -16,7 +17,7 @@ class Fruits extends Model
         "image_url"
     ];
 
-    // public function cocktails(){
-    //     return $this->belongToMany(Cocktails::class);
-    // }
+    public function cocktails(){
+        return $this->belongToMany(Cocktails::class);
+    }
 }
