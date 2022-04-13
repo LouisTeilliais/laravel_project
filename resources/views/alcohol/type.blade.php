@@ -53,7 +53,7 @@
                                                 <li>{{ $brands->name}}</li>
                                             </ul>
                                         @endif
-                                @endforeach
+                                    @endforeach
                                 </td>
                                 
                                 <td>{{ $types->created_at}}</td>

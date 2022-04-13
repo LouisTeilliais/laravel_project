@@ -48,7 +48,7 @@
                         <tr>
                             <th scope="row">{{$glasses->id}}
                                 <td>{{ $glasses->name}}</td>
-                                <td> <img height="100" width="100" class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $glasses->image_url) }} /></td>
+                                <td> <img height="100" width="100" class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $glasses->image_url) }}" /></td>
                                 <td>{{ $glasses->created_at}}</td>
                                 <td>{{ $glasses->updated_at}}</td>
                                 <td><a class="btn btn-danger" id="del" href="{{route('glasse.delete', $glasses->id )}}">Supprimer</a></td>

@@ -171,7 +171,6 @@ Route::get(
     [CocktailsController::class, 'index']
 )->name('cocktails.index');
 
-
 Route::post(    
     '/cocktails',
     [CocktailsController::class, 'create']
@@ -185,5 +184,5 @@ Route::get(
 
 Route::put(
     '/cocktails/{id}',
-    [CocktailsController::class, 'update']
-)->name('cocktails.update');
+    [CocktailsController::class, 'add']
+)->name('cocktails.add');
