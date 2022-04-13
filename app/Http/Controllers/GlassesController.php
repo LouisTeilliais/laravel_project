@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Glasses;
+use App\Models\Cocktails;
 
 
 class GlassesController extends Controller
@@ -28,7 +29,8 @@ class GlassesController extends Controller
     }
 
     public function delete($id){
-        $glasse = Glasses::destroy($id); 
+        $glasse = Glasses::destroy($id);
+        $cocktails = Cocktails::where('glasse_id', $id)->delete(); 
         return redirect() -> route('glasse.index');
     }
 

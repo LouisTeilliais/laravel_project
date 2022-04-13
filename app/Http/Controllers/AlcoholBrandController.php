@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AlcoholList;
 use App\Models\AlcoholType;
+use App\Models\Liaison\CocktailMarques;
+use App\Models\Cocktails;
 
 
 class AlcoholBrandController extends Controller
@@ -31,6 +33,13 @@ class AlcoholBrandController extends Controller
 
     public function delete($id){
         $brand = AlcoholList::destroy($id); 
+        $cocktailBrands = CocktailMarques::all();
+        foreach($cocktailBrands as $cocktailBrand){
+            if($cocktailBrand->brand_id == $id){
+                $cocktails = Cocktails::destroy($cocktailBrand->cocktail_id);
+                $cocktails = CocktailMarques::where('cocktail_id', $cocktailBrand->cocktail_id)->delete();
+            }
+        }
         return redirect() -> route('brand.index');
     }
 

@@ -20,7 +20,4 @@ class Cocktails extends Model
         return $this->belongsTo('App\Models\Glasses', "glasse_id");
     }
 
-    // public function cocktailsFruits(){
-    //     return $this->belongsToMany('App\Models\Fruits', 'cocktails_fruits', 'cocktail_id', 'fruits_id');
-    // }
 }

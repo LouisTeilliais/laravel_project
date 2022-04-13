@@ -16,7 +16,5 @@ class Fruits extends Model
         "image_url"
     ];
 
-    // public function cocktails(){
-    //     return $this->belongToMany(Cocktails::class);
-    // }
+
 }
