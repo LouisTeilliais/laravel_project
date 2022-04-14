@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Glasses;
 use App\Models\Cocktails;
 
@@ -39,8 +40,20 @@ class GlassesController extends Controller
 
         $glasse = Glasses::findOrFail($id);
         $glasse->name = $request->get('add');
-        $glasse->save();
 
+        if($request->hasfile('image')){
+            $newImageName = time().'-'. $request->file("image")->getClientOriginalName();
+            $glasse->image_url = $newImageName;
+            $request->file('image')->storeAs('public/images', $newImageName);
+
+            $destination = 'public/images'.$glasse->image_url;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+        }
+
+        $glasse->save();
         return redirect()->route('glasse.index');
     }
 }

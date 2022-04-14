@@ -16,9 +16,8 @@ class Cocktails extends Model
         "name",
         "glasse_id",
     ];
-
+    
     public function cocktailsGlasse() {
         return $this->belongsTo('App\Models\Glasses', "glasse_id");
     }
-
 }

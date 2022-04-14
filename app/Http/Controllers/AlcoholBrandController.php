@@ -48,6 +48,7 @@ class AlcoholBrandController extends Controller
 
         $brand = AlcoholList::findOrFail($id);
         $brand->name = $request->get('brandName');
+        $brand->degrees = $request->get('degrees');
         $brand->save();
 
         return redirect()->route('brand.index');

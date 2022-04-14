@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Fruits;
 use App\Models\Cocktails;
 use App\Models\Liaison\CocktailFruits;
@@ -28,8 +29,8 @@ class FruitsController extends Controller
 
     }
 
-
     public function delete($id){
+        
         $fruits = Fruits::destroy($id);
         $cocktailFruits = CocktailFruits::all();
         foreach($cocktailFruits as $cocktailFruit){
@@ -45,6 +46,19 @@ class FruitsController extends Controller
 
         $fruits = Fruits::findOrFail($id);
         $fruits->name = $request->get('fruitName');
+
+        if($request->hasfile('image')){
+            $newImageName = time().'-'. $request->file("image")->getClientOriginalName();
+            $fruits->image_url = $newImageName;
+            $request->file('image')->storeAs('public/images', $newImageName);
+
+            $destination = 'public/images'.$fruits->image_url;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+        }
+
         $fruits->save();
         return redirect() -> route('fruits.index');
     }

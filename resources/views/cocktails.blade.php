@@ -17,6 +17,8 @@
         <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
         <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
         <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
     </div>
 
     <h1 class="text-center">Liste des Cocktails</h1>
