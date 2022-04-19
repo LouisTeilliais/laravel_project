@@ -52,7 +52,7 @@
                         <td> <form action=" {{ route('sirop.update', $sirops->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
+                        <!-- <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button> -->
                         <input class="form-control" type="text" name="add" value="{{$sirops->name}}"></td>
                     </th>
                 </tr>
