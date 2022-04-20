@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types_alcohol', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('cocktails_sirop', function (Blueprint $table) {
+            $table->unsignedBigInteger('cocktail_id')->nullable();
+            $table->unsignedBigInteger('sirop_id')->nullable();
+            $table->foreign('sirop_id')->references('id')->on('sirop');
+            $table->foreign('cocktail_id')->references('id')->on('cocktail');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types_alcohol');
+        Schema::dropIfExists('cocktails_sirop');
     }
 };

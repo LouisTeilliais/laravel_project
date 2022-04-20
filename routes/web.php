@@ -7,6 +7,9 @@ use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
 use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
+use App\Http\Controllers\AlcoholBrandController;
+use App\Http\Controllers\CocktailsController;
+
 
 
 //Menu des alcohols
@@ -14,12 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name("home");
 
+
+
 //Sirop 
 Route::get(
     '/alcohol/sirop',
     [SiropController::class, 'index']
 )->name('sirop.index');
-
 
 Route::post(
     '/alcohol/sirop',
@@ -132,3 +136,53 @@ Route::put(
     '/alcohol/{id}/glasse',
     [GlassesController::class, 'update']
 )->name('glasse.update');
+
+
+// Alcohol brand 
+
+
+Route::get(
+    '/alcohol/brand',
+    [AlcoholBrandController::class, 'index']
+)->name('brand.index');
+
+
+Route::post(    
+    'alcohol/brand',
+    [AlcoholBrandController::class, 'create']
+)->name('brand.create');
+
+
+Route::get(
+    '/alcohol/{id}/brand',
+    [AlcoholBrandController::class, 'delete']
+)->name('brand.delete');
+
+
+Route::put(
+    '/alcohol/{id}/brand',
+    [AlcoholBrandController::class, 'update']
+)->name('brand.update');
+
+// Cocktails 
+
+Route::get(
+    '/cocktails',
+    [CocktailsController::class, 'index']
+)->name('cocktails.index');
+
+Route::post(    
+    '/cocktails',
+    [CocktailsController::class, 'create']
+)->name('cocktails.create');
+
+
+Route::get(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'delete']
+)->name('cocktails.delete');
+
+Route::put(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'add']
+)->name('cocktails.add');

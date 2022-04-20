@@ -9,47 +9,83 @@
     <title>Ajouter sirop</title>
 </head>
 <body>
-    <a href=" {{ route('home')}}">Retour au menu</a>
-    <h1>Liste de Sirop</h1>
+     
+    <div class = "container navbar" >
+        <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+        <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
+        <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
+        <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
+        <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
+        <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
+    </div>
 
-    <form action=" {{ route('sirop.create') }}" method="POST">
-        @csrf
-        <input  type="text" name="add">
-        <button type="submit"  class="btn btn-success"> Ajouter boisson sirops </button>
-    </form>
+    <h1 class="text-center">Liste de Sirop</h1>
 
-    @if(!is_null($sirop) && !empty($sirop))
-        @foreach($sirop as $sirops)    
-        <div class="position-relative">
-            <div class="row align-items-start">
-                <div class="card text-center " style="width: 18rem;">
-                    <div class="card-body">
-                    <h5> Nom du sirop :  {{  $sirops->name}}   </h5>
-                    <p> Id : {{$sirops->id}}</p>
-                    <p> Ajouté le : {{$sirops->created_at}}</p>
-                    <p> Modifié le : {{$sirops->updated_at}}</p>
-                    <p> </p>
-                    </div>
-                                    
-                    <a class="btn btn-danger" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a>
-                    <form action=" {{ route('sirop.update', $sirops->id) }}" method="POST">
+    <div class = "container" >
+        <table class="table align-middle table-light table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <form action=" {{ route('sirop.create') }}" method="POST">
                     @csrf
-                    @method('PUT')
-                    <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
-                    <input class="form-control" type="text" name="add" value="{{$sirops->name}}">
-                    
-                    </form>
-                </div>       
-            </div>
-        </div>
-        @endforeach
-    @endif
+                    <input  type="text" placeholder="Taper un sirop" name="add">
+                    <button type="submit"  class="btn btn-success"> Ajouter sirop </button>
+                </form>
+            </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Ajouté à</th>
+                <th scope="col">Mofifié à</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        @if(!is_null($sirop) && !empty($sirop))
+            @foreach($sirop as $sirops)    
+            <tbody>
+                <tr>
+                    <th scope="row">{{$sirops->id}}
+                        <td>
+                            <form action=" {{ route('sirop.update', $sirops->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button hidden type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
+                            <input class="form-control" type="text" name="add" value="{{$sirops->name}}">
+                        </td>
+                        <td>{{ $sirops->created_at}}</td>
+                        <td>{{ $sirops->updated_at}}</td>
+                        <td><a class="btn btn-danger" id="del" href="{{route('sirop.delete', $sirops->id )}}">Supprimer</a></td>
+                    </th>
+                </tr>
+            </tbody>
+            @endforeach
+        @endif
+        </table>
+    </div>  
     
-
-
 </body>
 
 <script>
 
 </script>
 </html>
+
+<style>
+    
+    input[type="text"]{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    input[type="text"]:hover{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    
+</style>

@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types_alcohol', function (Blueprint $table) {
+        Schema::create('alcohol_list', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('degrees');
+            $table->unsignedBigInteger('alcohol_id')->nullable(); 
+            $table->foreign('alcohol_id')->references('id')->on('types_alcohol');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types_alcohol');
+        Schema::dropIfExists('alcohol_list');
     }
 };

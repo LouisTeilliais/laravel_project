@@ -9,43 +9,62 @@
     <title>Ajouter Softs</title>
 </head>
 <body>
-    <a href=" {{ route('home')}}">Retour au menu</a>
-    <h1>Softs</h1>
 
-    <form action=" {{ route('softs.create') }}" method="POST">
-        @csrf
-        <input type="text" name="add">
-        <button type="submit" class="btn btn-success"> Ajouter boisson soft </button>
-    </form>
+    <div class = "container navbar" >
+        <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+        <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
+        <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
+        <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
+        <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
+        <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
+    </div>
+
+    <h1 class="text-center">Liste des Softs</h1>
 
 
-    @if(!is_null($softs) && !empty($softs))
-        @foreach($softs as $soft)
-        <div class="position-relative">
-            <div class="row align-items-start">
-                <div class="card text-center " style="width: 18rem;">
-                    <div class="card-body">
-                    <h5> Nom du sirop :  {{  $soft->name}}   </h5>
-                    <p> Id : {{$soft->id}}</p>
-                    <p> Ajouté le : {{$soft->created_at}}</p>
-                    <p> Modifié le : {{$soft->updated_at}}</p>
-                    <p> </p>
-                    </div>
-                                    
-                    <a class="btn btn-danger" id="del" href="{{route('softs.delete', $soft->id )}}">Supprimer</a>
-                    <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
+
+    <div class = "container" >
+        <table class="table align-middle table-light table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <form action=" {{ route('softs.create') }}" method="POST">
                     @csrf
-                    @method('PUT')
-                    <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
-                    <input class="form-control" type="text" name="add" value="{{$soft->name}}">
-                    
-                    </form>
-                </div>       
-            </div>
-        </div>
-        @endforeach
-    @endif
-    
+                    <input type="text" placeholder="Taper un soft" name="add">
+                    <button type="submit" class="btn btn-success"> Ajouter soft </button>
+                </form>
+            </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Ajouté à</th>
+                <th scope="col">Mofifié à</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        @if(!is_null($softs) && !empty($softs))
+            @foreach($softs as $soft)
+            <tbody>
+                <tr>
+                    <th scope="row">{{$soft->id}}
+                        <td> <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button hidden type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
+                            <input class="form-control" type="text" name="add" value="{{$soft->name}}">
+                        </td>
+                        <td>{{ $soft->created_at}}</td>
+                        <td>{{ $soft->updated_at}}</td>
+                        <td><a class="btn btn-danger" id="del" href="{{route('softs.delete', $soft->id )}}">Supprimer</a></td>
+                    </th>
+                </tr>
+            </tbody>
+            @endforeach
+        @endif
+        </table>
+    </div>  
+   
 
 <script>
 let del = document.querySelectorAll("#del");
@@ -60,3 +79,22 @@ del.forEach(element => {
 
 </body>
 </html>
+
+<style>
+    
+    input[type="text"]{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    input[type="text"]:hover{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    
+    </style>

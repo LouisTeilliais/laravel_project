@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Softs;
+use App\Models\Cocktails;
+use App\Models\Liaison\CocktailSofts;
 
 
 
@@ -27,6 +29,14 @@ class SoftsController extends Controller
 
     public function delete($id){
         $softs = Softs::destroy($id); 
+        $cocktailSofts = CocktailSofts::all();
+        foreach($cocktailSofts as $cocktailSoft){
+            if($cocktailSoft->softs_id == $id){
+                
+                $cocktails = Cocktails::destroy($cocktailSoft->cocktail_id);
+                $cocktails = CocktailSofts::where('cocktail_id', $cocktailSoft->cocktail_id)->delete();
+            }
+        }
         return redirect() -> route('softs.index');
     }
 

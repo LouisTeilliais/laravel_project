@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cocktails;
 
 class Fruits extends Model
 {
@@ -15,4 +16,5 @@ class Fruits extends Model
         "name",
         "image_url"
     ];
+
 }
