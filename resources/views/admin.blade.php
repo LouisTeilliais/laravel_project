@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,10 +35,8 @@
         <li>
             <a href=" {{ route('cocktails.index')}}">Créer un cocktail </a>
         </li>
-        <li>
-            <a href=" {{ route('auth.login')}}">Front partie</a>
-        </li>
     </ul>
     
 </body>
 </html>
+@endsection

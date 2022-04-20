@@ -18,12 +18,14 @@ use App\Http\Controllers\HomeController;
 //     return view('home');
 // })->name("home");
 
-
 Route::get(
     '/home',
     [HomeController::class, 'index']
-)->name('home.index');
+)->name('home');
 
+Route::get('/admin', function () {
+    return view('admin');
+})->name("admin");
 
 //Sirop 
 Route::get(
@@ -194,13 +196,3 @@ Route::put(
 
 Auth::routes();
 
-Route::get(
-    '/', 
-    [App\Http\Controllers\HomeController::class, 'index']
-)->name('auth.login');
-
-
-Route::get(
-    '/alcohol/fruits',
-    [FruitsController::class, 'front']
-)->name('fruits.front');

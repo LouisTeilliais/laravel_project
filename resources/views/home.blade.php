@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,6 +107,8 @@ del.forEach(element => {
 </body>
 </html>
 
+@endsection
+
 <style>
 
 .container_navbar{
@@ -122,3 +125,4 @@ del.forEach(element => {
     color: blue 
 } 
 </style>
+
