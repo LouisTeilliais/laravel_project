@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AlcoholList;
 use App\Models\AlcoholType;
+use App\Models\Liaison\CocktailFruits;
 use App\Models\Liaison\CocktailMarques;
+use App\Models\Liaison\CocktailSirops;
+use App\Models\Liaison\CocktailSofts;
 use App\Models\Cocktails;
 
 
@@ -38,6 +41,9 @@ class AlcoholBrandController extends Controller
             if($cocktailBrand->brand_id == $id){
                 $cocktails = Cocktails::destroy($cocktailBrand->cocktail_id);
                 $cocktails = CocktailMarques::where('cocktail_id', $cocktailBrand->cocktail_id)->delete();
+                $cocktails = CocktailFruits::where('cocktail_id', $cocktailBrand->cocktail_id)->delete();
+                $cocktails = CocktailSofts::where('cocktail_id', $cocktailBrand->cocktail_id)->delete();
+                $cocktails = CocktailSirops::where('cocktail_id', $cocktailBrand->cocktail_id)->delete();
             }
         }
         return redirect() -> route('brand.index');

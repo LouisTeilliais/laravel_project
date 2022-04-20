@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\SiropController;
 use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
@@ -9,111 +8,123 @@ use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
 use App\Http\Controllers\AlcoholBrandController;
 use App\Http\Controllers\CocktailsController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-
-//Menu des alcohols
 // Route::get('/', function () {
-//     return view('home');
-// })->name("home");
+//     return view('welcome');
+// })->name('home');
 
 Route::get(
-    '/home',
-    [HomeController::class, 'index']
+    '/',
+    [WelcomeController::class, 'index']
 )->name('home');
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name("admin");
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 
 //Sirop 
 Route::get(
-    '/admin/sirop',
+    '/alcohol/sirop',
     [SiropController::class, 'index']
 )->name('sirop.index');
 
 Route::post(
-    '/admin/sirop',
+    '/alcohol/sirop',
     [SiropController::class, 'create']
 )->name('sirop.create');
 
 Route::get(
-    '/admin/{id}/sirop',
+    '/alcohol/{id}/sirop',
     [SiropController::class, 'delete']
 )->name('sirop.delete');
 
 Route::put(
-    '/admin/{id}/sirop',
+    '/alcohol/{id}/sirop',
     [SiropController::class, 'update']
 )->name('sirop.update');
 
 
+
 // Types d'alcools
 Route::get(
-    '/admin/type',
+    '/alcohol/type',
     [AlcoholTypeController::class, 'index']
 )->name('type.index');
 
 
 Route::post(
-    'admin/type',
+    'alcohol/type',
     [AlcoholTypeController::class, 'create']
 )->name('type.create');
 
 
 Route::get(
-    '/admin/{id}/type',
+    '/alcohol/{id}/type',
     [AlcoholTypeController::class, 'delete']
 )->name('type.delete');
 
 
 Route::put(
-    '/admin/{id}/type',
+    '/alcohol/{id}/type',
     [AlcoholTypeController::class, 'update']
 )->name('type.update');
 
 
 
-//Softs
+//Softs (sans alcohol)
 Route::get(
-    '/admin/softs',
+    '/alcohol/softs',
     [SoftsController::class, 'index']
 )->name('softs.index');
 
 Route::post(
-    '/admin/softs',
+    '/alcohol/softs',
     [SoftsController::class, 'create']
 )->name('softs.create');
 
 Route::get(
-    '/admin/{id}/softs',
+    '/alcohol/{id}/softs',
     [SoftsController::class, 'delete']
 )->name('softs.delete');
 
 Route::put(
-    '/admin/{id}/softs',
+    '/alcohol/{id}/softs',
     [SoftsController::class, 'update']
 )->name('softs.update');
 
 //Fruits
 Route::get(
-    '/admin/fruits',
+    '/alcohol/fruits',
     [FruitsController::class, 'index']
 )->name('fruits.index');
 
 Route::post(
-    '/admin/fruits',
+    '/alcohol/fruits',
     [FruitsController::class, 'create']
 )->name('fruits.create');
 
 Route::get(
-    '/admin/{id}/fruits',
+    '/alcohol/{id}/fruits',
     [FruitsController::class, 'delete']
 )->name('fruits.delete');
 
 Route::put(
-    '/admin/{id}/fruits',
+    '/alcohol/{id}/fruits',
     [FruitsController::class, 'update']
 )->name('fruits.update');
 
@@ -122,50 +133,52 @@ Route::put(
 // Glasses
 
 Route::get(
-    '/admin/glasse',
+    '/alcohol/glasse',
     [GlassesController::class, 'index']
 )->name('glasse.index');
 
 
 Route::post(
-    'admin/glasse',
+    'alcohol/glasse',
     [GlassesController::class, 'create']
 )->name('glasse.create');
 
 
 Route::get(
-    '/admin/{id}/glasse',
+    '/alcohol/{id}/glasse',
     [GlassesController::class, 'delete']
 )->name('glasse.delete');
 
 
 Route::put(
-    '/admin/{id}/glasse',
+    '/alcohol/{id}/glasse',
     [GlassesController::class, 'update']
 )->name('glasse.update');
 
 
-// alcohol brand 
+// Alcohol brand 
+
+
 Route::get(
-    '/admin/brand',
+    '/alcohol/brand',
     [AlcoholBrandController::class, 'index']
 )->name('brand.index');
 
 
 Route::post(    
-    'admin/brand',
+    'alcohol/brand',
     [AlcoholBrandController::class, 'create']
 )->name('brand.create');
 
 
 Route::get(
-    '/admin/{id}/brand',
+    '/alcohol/{id}/brand',
     [AlcoholBrandController::class, 'delete']
 )->name('brand.delete');
 
 
 Route::put(
-    '/admin/{id}/brand',
+    '/alcohol/{id}/brand',
     [AlcoholBrandController::class, 'update']
 )->name('brand.update');
 
@@ -191,8 +204,3 @@ Route::put(
     '/cocktails/{id}',
     [CocktailsController::class, 'add']
 )->name('cocktails.add');
-
-//admin 
-
-Auth::routes();
-

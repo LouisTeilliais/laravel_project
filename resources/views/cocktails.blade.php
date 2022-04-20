@@ -32,13 +32,14 @@
                     @csrf
                     <div class="input_add">
                         <input class="input" type="text" placeholder="Nom du cocktail" name="name" required>
-                        <input type="file" name="image" >
                         <select class="form-select" name="glasses" required >
                             <option value="null">Sélectionnez le verre</option>
                             @foreach($glasses as $glasse)
                                 <option value="{{$glasse->id}}">{{$glasse->name}}</option>
                             @endforeach
                         </select>
+                        <input type="file" name="image" >
+                        
                         <button type="submit" class="btn btn-success"> Ajouter le cocktail </button>
                     </div>
                 </form>
@@ -62,6 +63,7 @@
                     <tr>
                         <th scope="row">{{$cocktail->id}}
                             <td>{{$cocktail->name}}</td>
+                            <td><img height="100" width="100" class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $cocktail->image_url) }}"/></td>
                             @foreach($glasses as $glasse)
                                 @if($glasse->id == $cocktail->glasse_id)
                                     <td> {{$glasse->name}} </td>
@@ -113,7 +115,6 @@
                                     <button class="btn btn-success" type="submit" >Ajouter</button>
                                 </form>
                             </td>
-                            <td><img height="100" width="100" class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $cocktail->image_url) }}"/></td>
                             <td>
                                 @foreach($cocktailSofts as $cocktailSoft)
                                     @foreach($softs as $soft)

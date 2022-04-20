@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Glasses;
 use App\Models\Cocktails;
+use App\Models\Liaison\CocktailFruits;
+use App\Models\Liaison\CocktailMarques;
+use App\Models\Liaison\CocktailSirops;
+use App\Models\Liaison\CocktailSofts;
 
 
 class GlassesController extends Controller
@@ -32,6 +36,15 @@ class GlassesController extends Controller
     public function delete($id){
         $glasse = Glasses::destroy($id);
         $cocktails = Cocktails::where('glasse_id', $id)->delete(); 
+        $cocktails = Cocktails::all();
+        foreach($cocktails as $cocktail){
+            if($cocktail->glasse_id == $id){
+                $del = CocktailFruits::where('cocktail_id', $cocktail->id)->delete();
+                $del = CocktailMarques::where('cocktail_id', $cocktail->id)->delete();
+                $del = CocktailSirops::where('cocktail_id', $cocktail->id)->delete();
+                $del = CocktailSofts::where('cocktail_id', $cocktail->id)->delete();
+            }
+        }
         return redirect() -> route('glasse.index');
     }
 

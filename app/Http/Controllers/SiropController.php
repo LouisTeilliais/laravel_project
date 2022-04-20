@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sirop;
 use App\Models\Cocktails;
+use App\Models\Liaison\CocktailFruits;
+use App\Models\Liaison\CocktailMarques;
 use App\Models\Liaison\CocktailSirops;
+use App\Models\Liaison\CocktailSofts;
 
 class SiropController extends Controller
 {
@@ -28,11 +31,15 @@ class SiropController extends Controller
 
     public function delete($id){
         $sirop = Sirop::destroy($id);
-        $cocktailSirops = cocktailSirops::all();
+        $cocktailSirops = CocktailSirops::all();
         foreach($cocktailSirops as $cocktailSirop){
             if($cocktailSirop->sirop_id == $id){
                 
                 $cocktails = Cocktails::destroy($cocktailSirop->cocktail_id);
+                $cocktails = CocktailSirops::where('cocktail_id', $cocktailSirop->cocktail_id)->delete();
+                $cocktails = CocktailSofts::where('cocktail_id', $cocktailSirop->cocktail_id)->delete();
+                $cocktails = CocktailMarques::where('cocktail_id', $cocktailSirop->cocktail_id)->delete();
+                $cocktails = CocktailFruits::where('cocktail_id', $cocktailSirop->cocktail_id)->delete();
             }
         } 
         return redirect() -> route('sirop.index');
