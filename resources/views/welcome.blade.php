@@ -28,10 +28,10 @@
             <a href=" {{ route('glasse.index')}}">Voir les types de verres</a>
         </li>
         <li>
-            <a href=" {{ route('brand.index')}}">Voir les marques d'alcool</a>
+            <a href=" {{ route('brand.index')}}">Voir les marques d'alcools</a>
         </li>
         <li>
-            <a href=" {{ route('cocktails.index')}}">Create cocktail </a>
+            <a href=" {{ route('cocktails.index')}}">Créer un cocktail </a>
         </li>
     </ul>
     
