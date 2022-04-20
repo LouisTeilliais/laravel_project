@@ -10,12 +10,14 @@
 <body>
 
     <div class = "container navbar" >
-            <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
-            <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
-            <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
-            <a class="btn btn-light" href=" {{ route('softs.index')}}">Softs</a>
-            <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
-            <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+        <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
+        <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
+        <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
+        <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
+        <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
     </div>
 
     <h1 class="text-center">Liste des Alcools</h1>
@@ -37,7 +39,6 @@
                     <th scope="col">Ajouté à</th>
                     <th scope="col">Mofifié à</th>
                     <th scope="col">Supprimer</th>
-                    <th scope="col">Modifier</th>
                 </tr>
             </thead>
             @if(!is_null($type) && !empty($type))
@@ -45,7 +46,14 @@
                     <tbody>
                         <tr>
                             <th scope="row">{{$types->id}}
-                                <td>{{ $types->name}}</td>
+                                <td> 
+                                    <form action=" {{ route('type.update', $types->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button hidden type="submit" class="btn btn-warning"> Modifier alcool </button>
+                                        <input class="form-control" type="text" name="typeAlcohol" value="{{$types->name}}">
+                                    </form>
+                                </td>
                                 <td>
                                     @foreach($brand as $brands)
                                         @if($brands-> alcohol_id == $types->id)
@@ -59,14 +67,6 @@
                                 <td>{{ $types->created_at}}</td>
                                 <td>{{ $types->updated_at}}</td>
                                 <td><a class="btn btn-danger" id="del" href="{{route('type.delete', $types->id )}}">Supprimer</a></td>
-                                <td> 
-                                    <form action=" {{ route('type.update', $types->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-warning"> Modifier alcool </button>
-                                        <input class="form-control" type="text" name="typeAlcohol" value="{{$types->name}}">
-                                    </form>
-                                </td>
                             </th>
                         </tr>
                     </tbody>
@@ -89,3 +89,22 @@
 
 </body>
 </html>
+
+<style>
+    
+    input[type="text"]{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    input[type="text"]:hover{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    
+    </style>

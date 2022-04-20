@@ -17,6 +17,8 @@
         <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
         <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
         <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
     </div>
 
     <h1 class="text-center">Liste des Cocktails</h1>
@@ -34,36 +36,6 @@
                         <option value="null">Sélectionnez le verre</option>
                         @foreach($glasses as $glasse)
                             <option value="{{$glasse->id}}">{{$glasse->name}}</option>
-                        @endforeach
-                    </select>
-                    <select name="fruits" required >
-                        <option value="null">Sélectionnez un fruit</option>
-                        @foreach($fruits as $fruit)
-                            <option value="{{$fruit->id}}">{{$fruit->name}}</option>
-                        @endforeach
-                    </select>
-                    <select name="brands" required>
-                        <option value="null">Sélectionnez un alcool</option>
-                        @foreach($alcohols as $alcohol)
-                            <option disabled>{{$alcohol->name}}</option>
-                            @foreach($brands as $brand)
-                                @if($alcohol->id == $brand->alcohol_id)
-                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
-                                @endif
-                            @endforeach
-                            <option disabled>-----------</option>
-                        @endforeach
-                    </select>
-                    <select name="softs" required>
-                        <option value="null">Sélectionnez un soft</option>
-                        @foreach($softs as $soft)
-                            <option value="{{$soft->id}}">{{$soft->name}}</option>
-                        @endforeach
-                    </select>
-                    <select name="sirops" required>
-                        <option value="null">Sélectionnez un sirop</option>
-                        @foreach($sirops as $sirop)
-                            <option value="{{$sirop->id}}">{{$sirop->name}}</option>
                         @endforeach
                     </select>
 

@@ -37,45 +37,11 @@ class CocktailsController extends Controller
     public function create(Request $request){
         
         $cocktails = new Cocktails();
-        $cocktailFruits = new CocktailFruits();
-        $cocktailMarques = new CocktailMarques();
-        $cocktailSirops = new CocktailSirops();
-        $cocktailSofts = new CocktailSofts();
-
 
         if($request->get('glasses') != "null"){
             $cocktails ->name = $request->get('name');
             $cocktails ->glasse_id = $request->get('glasses');
             $cocktails->save();
-        }
-        $cocktails = Cocktails::where('name', $request->get('name'))->first();
-
-        //Ajout dans la table de liaison des fruits&cocktails
-        if($request->get('fruits') != "null"){
-            $cocktailFruits->cocktail_id = $cocktails->id;
-            $cocktailFruits->fruits_id = $request->get('fruits');
-            $cocktailFruits->save();
-        }
-
-        //Ajout dans la table de liaison des marques&cocktails
-        if($request->get('brands') != "null"){
-            $cocktailMarques->cocktail_id = $cocktails->id;
-            $cocktailMarques->brand_id = $request->get('brands');
-            $cocktailMarques->save();
-        }
-
-        //Ajout dans la table de liaison des sirops&cocktails
-        if($request->get('sirops') != "null"){
-            $cocktailSirops->cocktail_id = $cocktails->id;
-            $cocktailSirops->sirop_id = $request->get('sirops');
-            $cocktailSirops->save();
-        }
-
-        //Ajout dans la table de liaison des softs&cocktails
-        if($request->get('softs') != "null"){
-            $cocktailSofts->cocktail_id = $cocktails->id;
-            $cocktailSofts->softs_id = $request->get('softs');
-            $cocktailSofts->save();
         }
 
         return redirect() -> route("cocktails.index");
@@ -83,7 +49,11 @@ class CocktailsController extends Controller
 
 
     public function delete($id){
-        $cocktails = Cocktails::destroy($id); 
+        $cocktails = Cocktails::destroy($id);
+        $cocktails = CocktailFruits::where('cocktail_id', $id)->delete();
+        $cocktails = CocktailSofts::where('cocktail_id', $id)->delete();
+        $cocktails = CocktailMarques::where('cocktail_id', $id)->delete();
+        $cocktails = CocktailSirops::where('cocktail_id', $id)->delete();
         return redirect() -> route('cocktails.index');
     }
 

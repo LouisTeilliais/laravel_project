@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cocktail_id')->nullable();
             $table->unsignedBigInteger('fruits_id')->nullable();
             $table->foreign('fruits_id')->references('id')->on('fruits');
-            $table->foreign('cocktail_id')->references('id')->on('cocktail');
+            $table->foreign('cocktail_id')->references('id')->on('cocktails');
             $table->timestamps();
         });
     }

@@ -17,6 +17,8 @@
         <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
         <a class="btn btn-light" href=" {{ route('glasse.index')}}">Types de verres</a>
         <a class="btn btn-light" href=" {{ route('brand.index')}}">Marques d'alcool</a>
+        <a class="btn btn-light" href=" {{ route('softs.index')}}">Voir les softs</a>
+        <a class="btn btn-light" href=" {{ route('cocktails.index')}}">Create cocktail </a>
     </div>
 
     <h1 class="text-center">Liste des Softs</h1>
@@ -39,7 +41,6 @@
                 <th scope="col">Ajouté à</th>
                 <th scope="col">Mofifié à</th>
                 <th scope="col">Supprimer</th>
-                <th scope="col">Modifier</th>
             </tr>
         </thead>
         @if(!is_null($softs) && !empty($softs))
@@ -47,15 +48,15 @@
             <tbody>
                 <tr>
                     <th scope="row">{{$soft->id}}
-                        <td>{{ $soft->name}}</td>
+                        <td> <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button hidden type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
+                            <input class="form-control" type="text" name="add" value="{{$soft->name}}">
+                        </td>
                         <td>{{ $soft->created_at}}</td>
                         <td>{{ $soft->updated_at}}</td>
                         <td><a class="btn btn-danger" id="del" href="{{route('softs.delete', $soft->id )}}">Supprimer</a></td>
-                        <td> <form action=" {{ route('softs.update', $soft->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <button type="submit" class="btn btn-warning"> Modifier boisson sirops </button>
-                        <input class="form-control" type="text" name="add" value="{{$soft->name}}"></td>
                     </th>
                 </tr>
             </tbody>
@@ -78,3 +79,22 @@ del.forEach(element => {
 
 </body>
 </html>
+
+<style>
+    
+    input[type="text"]{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    input[type="text"]:hover{
+        background-color: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border:none;
+    }
+    
+    
+    </style>
