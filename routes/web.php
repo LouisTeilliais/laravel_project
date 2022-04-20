@@ -8,6 +8,7 @@ use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
 use App\Http\Controllers\AlcoholBrandController;
 use App\Http\Controllers\CocktailsController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,14 @@ use App\Http\Controllers\CocktailsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get(
+    '/',
+    [WelcomeController::class, 'index']
+)->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
