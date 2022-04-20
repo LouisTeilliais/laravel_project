@@ -29,6 +29,12 @@ class AlcoholTypeController extends Controller
 
     public function delete($id){
         $type = AlcoholType::destroy($id); 
+        $brands = AlcoholList::all();
+        foreach($brands as $brand) {
+            if($brand->alcohol_id == $id){
+                AlcoholList::destroy($brand->id);
+            }
+        }
         return redirect() -> route('type.index');
     }
 

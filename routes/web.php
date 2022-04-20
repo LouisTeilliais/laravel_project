@@ -8,14 +8,21 @@ use App\Http\Controllers\SoftsController;
 use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
 use App\Http\Controllers\AlcoholBrandController;
+use App\Http\Controllers\CocktailsController;
+use App\Http\Controllers\HomeController;
 
 
 
 //Menu des alcohols
-Route::get('/', function () {
-    return view('home');
-})->name("home");
+// Route::get('/', function () {
+//     return view('home');
+// })->name("home");
 
+
+Route::get(
+    '/home',
+    [HomeController::class, 'index']
+)->name('home.index');
 
 
 //Sirop 
@@ -23,7 +30,6 @@ Route::get(
     '/admin/sirop',
     [SiropController::class, 'index']
 )->name('sirop.index');
-
 
 Route::post(
     '/admin/sirop',
@@ -161,13 +167,35 @@ Route::put(
     [AlcoholBrandController::class, 'update']
 )->name('brand.update');
 
+// Cocktails 
+
+Route::get(
+    '/cocktails',
+    [CocktailsController::class, 'index']
+)->name('cocktails.index');
+
+Route::post(    
+    '/cocktails',
+    [CocktailsController::class, 'create']
+)->name('cocktails.create');
+
+
+Route::get(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'delete']
+)->name('cocktails.delete');
+
+Route::put(
+    '/cocktails/{id}',
+    [CocktailsController::class, 'add']
+)->name('cocktails.add');
 
 //admin 
 
 Auth::routes();
 
 Route::get(
-    '/home', 
+    '/', 
     [App\Http\Controllers\HomeController::class, 'index']
 )->name('auth.login');
 
