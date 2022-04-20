@@ -34,6 +34,7 @@ class SoftsController extends Controller
             if($cocktailSoft->softs_id == $id){
                 
                 $cocktails = Cocktails::destroy($cocktailSoft->cocktail_id);
+                $cocktails = CocktailSofts::where('cocktail_id', $cocktailSoft->cocktail_id)->delete();
             }
         }
         return redirect() -> route('softs.index');

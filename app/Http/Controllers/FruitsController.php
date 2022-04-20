@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\File;
 use App\Models\Fruits;
 use App\Models\Cocktails;
 use App\Models\Liaison\CocktailFruits;
+use App\Models\Liaison\CocktailMarques;
+use App\Models\Liaison\CocktailSirops;
+use App\Models\Liaison\CocktailSofts;
 
 class FruitsController extends Controller
 {
@@ -43,8 +46,11 @@ class FruitsController extends Controller
         $cocktailFruits = CocktailFruits::all();
         foreach($cocktailFruits as $cocktailFruit){
             if($cocktailFruit->fruits_id == $id){
-                
                 $cocktails = Cocktails::destroy($cocktailFruit->cocktail_id);
+                $cocktails = CocktailFruits::where('cocktail_id', $cocktailFruit->cocktail_id)->delete();
+                $cocktails = CocktailSofts::where('cocktail_id', $cocktailFruit->cocktail_id)->delete();
+                $cocktails = CocktailMarques::where('cocktail_id', $cocktailFruit->cocktail_id)->delete();
+                $cocktails = CocktailSirops::where('cocktail_id', $cocktailFruit->cocktail_id)->delete();
             }
         }
         return redirect() -> route('fruits.index');
