@@ -14,7 +14,7 @@ class AlcoholTypeController extends Controller
         $brand = AlcoholList::all();
         $type = AlcoholType::all();
 
-        return view("alcohol.type", compact("brand", "type"));
+        return view("admin.type", compact("brand", "type"));
     }
     
     public function create(Request $request){

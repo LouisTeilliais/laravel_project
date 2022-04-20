@@ -11,14 +11,16 @@ class FruitsController extends Controller
 
         $fruits = Fruits::all();
 
-        return view("alcohol.fruits", compact("fruits"));
+        return view("admin.fruits", compact("fruits"));
     }
 
-    public function saveFolder(Request $request)
-    {
-        
- 
+    public function front(){
+
+        $fruits = Fruits::all();
+
+        return view("alcohol.fruits", compact("fruits"));
     }
+    
     
     public function create(Request $request){
         

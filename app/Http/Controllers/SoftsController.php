@@ -13,7 +13,7 @@ class SoftsController extends Controller
 
         $softs = Softs::all();
 
-        return view("alcohol.softs", compact("softs"));
+        return view("admin.softs", compact("softs"));
     }
     
     public function create(Request $request){

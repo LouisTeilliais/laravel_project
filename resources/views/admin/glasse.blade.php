@@ -21,16 +21,17 @@
 
         <h1 class="text-center">Types de verre</h1>
 
+
         <div class = "container" >
             <table class="table align-middle table-light table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="text" placeholder="Taper un type de verre" name="add">
-                        <input type="file" name="image" >
-                        <button type="submit"  class="btn btn-success"> Ajouter un verre </button>
-                    </form>
+                <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" placeholder="Taper un verre" name="add">
+                    <input type="file" name="image" >
+                    <button type="submit"  class="btn btn-success" > Ajouter boisson glasses </button>
+                </form>
                 </tr>
                 <tr>
                     <th scope="col">ID</th>
@@ -48,15 +49,15 @@
                         <tr>
                             <th scope="row">{{$glasses->id}}
                                 <td>{{ $glasses->name}}</td>
-                                <td> <img height="100" width="100" class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $glasses->image_url) }} /></td>
+                                <td> <img  class="img-fluid rounded mx-auto d-block" src="{{ asset('storage/images/' . $glasses->image_url) }}" alt="" height="200" width="200"/></td>
                                 <td>{{ $glasses->created_at}}</td>
                                 <td>{{ $glasses->updated_at}}</td>
                                 <td><a class="btn btn-danger" id="del" href="{{route('glasse.delete', $glasses->id )}}">Supprimer</a></td>
                                 <td> <form action=" {{ route('glasse.update', $glasses->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-warning"> Modifier verres </button>
-                                <input class="form-control" type="text" name="add" value="{{$glasses->name}}"></td>
+                                <button type="submit" class="btn btn-warning"> Modifier boisson glasses </button>
+                                <input class="form-control" type="text" name="fruitName" value="{{$glasses->name}}"></td>
                             </th>
                         </tr>
                     </tbody>
@@ -64,6 +65,8 @@
             @endif
             </table>
         </div>  
+
+        
 
 <script>
     let del = document.querySelectorAll("#del");
