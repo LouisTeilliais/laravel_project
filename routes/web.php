@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\SiropController;
 use App\Http\Controllers\AlcoholTypeController;
 use App\Http\Controllers\SoftsController;
@@ -10,13 +9,26 @@ use App\Http\Controllers\GlassesController;
 use App\Http\Controllers\AlcoholBrandController;
 use App\Http\Controllers\CocktailsController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-
-//Menu des alcohols
 Route::get('/', function () {
     return view('welcome');
-})->name("home");
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 
 //Sirop 
