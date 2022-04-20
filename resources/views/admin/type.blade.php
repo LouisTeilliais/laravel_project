@@ -29,8 +29,10 @@
                 <tr>
                     <form action=" {{ route('type.create') }}" method="POST">
                         @csrf
-                        <input type="text" placeholder="Taper un alcool" name="typeAlcohol">
-                        <button class="btn btn-success" type="submit" > Ajouter un alcool </button>
+                        <div class="input_add">
+                            <input class="input" type="text" placeholder="Taper un alcool" name="typeAlcohol">
+                            <button class="btn btn-success" type="submit" > Ajouter un alcool </button>
+                        </div>
                     </form>
                 </tr>
                 <tr>
@@ -93,33 +95,51 @@
 
 <style>
 
-    .container_navbar{
-        display: flex;
-        text-align: center;
-        justify-content: space-between;
-        padding: 40px 50px 40px 10px;
-        background-color: #e9ecef;
-        margin-bottom: 50px;
-    }
+.container_navbar{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 40px 50px 40px 10px;
+    background-color: #e9ecef;
+    margin-bottom: 50px;
+}
 
-    .fa-home{ 
-        font-size: 25px; 
-        color: blue 
-    } 
+.fa-home{ 
+    font-size: 25px; 
+    color: blue 
+} 
+
+.input_add{
+    text-align:center;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #e9ecef;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.input_add .input {
+    background-color: white;
+    width: 300px;
+}
+
+.input_add .input:hover{
+    background-color: white;
+}
     
-    input[type="text"]{
-        background-color: #e9ecef;
-        padding: 10px 15px;
-        border-radius: 3px;
-        border:none;
-    }
-    
-    input[type="text"]:hover{
-        background-color: #e9ecef;
-        padding: 10px 15px;
-        border-radius: 3px;
-        border:none;
-    }
-    
-    
-    </style>
+input[type="text"]{
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border:none;
+}
+
+input[type="text"]:hover{
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border:none;
+}
+
+
+</style>

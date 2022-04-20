@@ -14,7 +14,8 @@ class Cocktails extends Model
 
     protected $fillable = [
         "name",
-        "glasse_id",
+        "image_url",
+        "glasse_id"
     ];
     
     public function cocktailsGlasse() {

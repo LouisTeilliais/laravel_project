@@ -29,10 +29,12 @@
             <h2 class="text-center">  {{$types->name}} </h2>
                         <form action=" {{ route('brand.create') }}" method="POST">
                             @csrf
-                            <input type="text" placeholder="Nom de la marque" name="brandName">
-                            <input type="number" placeholder="Degrés" name="degrees">
-                            <input type="text"  name="alcoholType_id" hidden value="{{$types->id}}">
-                            <button type="submit" class="btn btn-success"> Ajouter marque alcool </button>               
+                            <div class="input_add">
+                                <input class="input" type="text" placeholder="Nom de la marque" name="brandName">
+                                <input class="input" type="number" placeholder="Degrés" name="degrees">
+                                <input type="text"  name="alcoholType_id" hidden value="{{$types->id}}">
+                                <button type="submit" class="btn btn-success"> Ajouter marque alcool </button>    
+                            </div>           
                         </form>
                     @foreach($brand as $brands)
                         @if($brands-> alcohol_id == $types->id)
@@ -93,40 +95,60 @@
 
 <style>
 
-    .container_navbar{
-        display: flex;
-        text-align: center;
-        justify-content: space-between;
-        padding: 40px 50px 40px 10px;
-        background-color: #e9ecef;
-        margin-bottom: 50px;
-    }
+.container_navbar{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 40px 50px 40px 10px;
+    background-color: #e9ecef;
+    margin-bottom: 50px;
+}
 
-    .fa-home{ 
-        font-size: 25px; 
-        color: blue 
-    } 
-    
-    input[type="text"]{
-        background-color: #e9ecef;
-        padding: 10px 15px;
-        border-radius: 3px;
-        border:none;
-    }
-    
-    input[type="text"]:hover{
-        background-color: #e9ecef;
-        padding: 10px 15px;
-        border-radius: 3px;
-        border:none;
-    }
+.fa-home{ 
+    font-size: 25px; 
+    color: blue 
+} 
 
-    input[type="number"]{
-        background-color: #e9ecef;
-        padding: 10px 15px;
-        border-radius: 3px;
-        border:none;
-    }
-    
-    
-    </style>
+.input_add{
+    text-align:center;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #e9ecef;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.input_add .input {
+    background-color: white;
+    width: 300px;
+}
+
+.input_add .input:hover{
+    background-color: white;
+}
+
+input[type="text"]{
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border:none;
+}
+
+input[type="text"]:hover{
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border:none;
+}
+
+input[type="number"]{
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border:none;
+}
+
+
+</style>

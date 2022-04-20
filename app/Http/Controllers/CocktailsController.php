@@ -14,6 +14,7 @@ use App\Models\Liaison\CocktailFruits;
 use App\Models\Liaison\CocktailMarques;
 use App\Models\Liaison\CocktailSirops;
 use App\Models\Liaison\CocktailSofts;
+use Illuminate\Support\Facades\File;
 
 class CocktailsController extends Controller
 {
@@ -42,6 +43,11 @@ class CocktailsController extends Controller
         $cocktailSirops = new CocktailSirops();
         $cocktailSofts = new CocktailSofts();
 
+        $cocktails->name = $request->get("name");
+        $newImageName = time().'-'. $request->file("image")->getClientOriginalName();
+        $cokctails->image_url = $newImageName;
+        $request->file('image')->storeAs('public/images', $newImageName);
+        $cocktails->save();
 
         if($request->get('glasses') != "null"){
             $cocktails ->name = $request->get('name');

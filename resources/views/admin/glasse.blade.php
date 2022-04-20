@@ -31,9 +31,11 @@
                 <tr>
                 <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" placeholder="Taper un verre" name="add">
-                    <input type="file" name="image" >
-                    <button type="submit"  class="btn btn-success" > Ajouter boisson glasses </button>
+                    <div class="input_add">
+                        <input class="input" type="text" placeholder="Taper un verre" name="add">
+                        <input type="file" name="image" >
+                        <button type="submit"  class="btn btn-success" > Ajouter boisson glasses </button>
+                    </div>
                 </form>
                 </tr>
                 <tr>
@@ -105,6 +107,24 @@
     font-size: 25px; 
     color: blue 
 } 
+
+.input_add{
+    text-align:center;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #e9ecef;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.input_add .input {
+    background-color: white;
+    width: 300px;
+}
+
+.input_add .input:hover{
+    background-color: white;
+}
     
 input[type="text"]{
     background-color: #e9ecef;
