@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('glasse_id');
             $table->foreign('glasse_id')->references('id')->on('fruits');
+            $table->string('image_url');
             $table->timestamps();
         });
     }

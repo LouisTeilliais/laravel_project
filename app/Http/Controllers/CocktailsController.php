@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Cocktails;
 use App\Models\Glasses;
@@ -41,6 +42,9 @@ class CocktailsController extends Controller
         if($request->get('glasses') != "null"){
             $cocktails ->name = $request->get('name');
             $cocktails ->glasse_id = $request->get('glasses');
+            $newImageName = time().'-'. $request->file("image")->getClientOriginalName();
+            $cocktails->image_url = $newImageName;
+            $request->file('image')->storeAs('public/images', $newImageName);
             $cocktails->save();
         }
 
