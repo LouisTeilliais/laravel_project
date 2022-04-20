@@ -24,16 +24,17 @@
 
         <h1 class="text-center">Types de verre</h1>
 
+
         <div class = "container" >
             <table class="table align-middle table-light table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="text" placeholder="Taper un type de verre" name="add">
-                        <input type="file" name="image" >
-                        <button type="submit"  class="btn btn-success"> Ajouter un verre </button>
-                    </form>
+                <form action=" {{ route('glasse.create') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" placeholder="Taper un verre" name="add">
+                    <input type="file" name="image" >
+                    <button type="submit"  class="btn btn-success" > Ajouter boisson glasses </button>
+                </form>
                 </tr>
                 <tr>
                     <th scope="col">ID</th>
@@ -72,6 +73,8 @@
             @endif
             </table>
         </div>  
+
+        
 
 <script>
     let del = document.querySelectorAll("#del");

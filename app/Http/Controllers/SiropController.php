@@ -13,9 +13,9 @@ class SiropController extends Controller
 
         $sirop = Sirop::all();
 
-        return view("alcohol.sirop", compact("sirop"));
+        return view("admin.sirop", compact("sirop"));
     }
-    
+
     public function create(Request $request){
         
         $sirop = new Sirop();

@@ -9,8 +9,7 @@
     <title> Alcohol Project </title>
 </head>
 <body>
-    <h1> Alcohol Project</h1>
-
+    <h1>Front Partie</h1>
     <ul>
         <li>
             <a href=" {{ route('sirop.index')}}">Voir les sirops</a>
@@ -32,6 +31,9 @@
         </li>
         <li>
             <a href=" {{ route('cocktails.index')}}">Créer un cocktail </a>
+        </li>
+        <li>
+            <a href=" {{ route('auth.login')}}">Front partie</a>
         </li>
     </ul>
     

@@ -9,104 +9,109 @@ use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\GlassesController;
 use App\Http\Controllers\AlcoholBrandController;
 use App\Http\Controllers\CocktailsController;
+use App\Http\Controllers\HomeController;
 
 
 
 //Menu des alcohols
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
+// Route::get('/', function () {
+//     return view('home');
+// })->name("home");
 
+
+Route::get(
+    '/home',
+    [HomeController::class, 'index']
+)->name('home.index');
 
 
 //Sirop 
 Route::get(
-    '/alcohol/sirop',
+    '/admin/sirop',
     [SiropController::class, 'index']
 )->name('sirop.index');
 
 Route::post(
-    '/alcohol/sirop',
+    '/admin/sirop',
     [SiropController::class, 'create']
 )->name('sirop.create');
 
 Route::get(
-    '/alcohol/{id}/sirop',
+    '/admin/{id}/sirop',
     [SiropController::class, 'delete']
 )->name('sirop.delete');
 
 Route::put(
-    '/alcohol/{id}/sirop',
+    '/admin/{id}/sirop',
     [SiropController::class, 'update']
 )->name('sirop.update');
 
 
-
 // Types d'alcools
 Route::get(
-    '/alcohol/type',
+    '/admin/type',
     [AlcoholTypeController::class, 'index']
 )->name('type.index');
 
 
 Route::post(
-    'alcohol/type',
+    'admin/type',
     [AlcoholTypeController::class, 'create']
 )->name('type.create');
 
 
 Route::get(
-    '/alcohol/{id}/type',
+    '/admin/{id}/type',
     [AlcoholTypeController::class, 'delete']
 )->name('type.delete');
 
 
 Route::put(
-    '/alcohol/{id}/type',
+    '/admin/{id}/type',
     [AlcoholTypeController::class, 'update']
 )->name('type.update');
 
 
 
-//Softs (sans alcohol)
+//Softs
 Route::get(
-    '/alcohol/softs',
+    '/admin/softs',
     [SoftsController::class, 'index']
 )->name('softs.index');
 
 Route::post(
-    '/alcohol/softs',
+    '/admin/softs',
     [SoftsController::class, 'create']
 )->name('softs.create');
 
 Route::get(
-    '/alcohol/{id}/softs',
+    '/admin/{id}/softs',
     [SoftsController::class, 'delete']
 )->name('softs.delete');
 
 Route::put(
-    '/alcohol/{id}/softs',
+    '/admin/{id}/softs',
     [SoftsController::class, 'update']
 )->name('softs.update');
 
 //Fruits
 Route::get(
-    '/alcohol/fruits',
+    '/admin/fruits',
     [FruitsController::class, 'index']
 )->name('fruits.index');
 
 Route::post(
-    '/alcohol/fruits',
+    '/admin/fruits',
     [FruitsController::class, 'create']
 )->name('fruits.create');
 
 Route::get(
-    '/alcohol/{id}/fruits',
+    '/admin/{id}/fruits',
     [FruitsController::class, 'delete']
 )->name('fruits.delete');
 
 Route::put(
-    '/alcohol/{id}/fruits',
+    '/admin/{id}/fruits',
     [FruitsController::class, 'update']
 )->name('fruits.update');
 
@@ -115,52 +120,50 @@ Route::put(
 // Glasses
 
 Route::get(
-    '/alcohol/glasse',
+    '/admin/glasse',
     [GlassesController::class, 'index']
 )->name('glasse.index');
 
 
 Route::post(
-    'alcohol/glasse',
+    'admin/glasse',
     [GlassesController::class, 'create']
 )->name('glasse.create');
 
 
 Route::get(
-    '/alcohol/{id}/glasse',
+    '/admin/{id}/glasse',
     [GlassesController::class, 'delete']
 )->name('glasse.delete');
 
 
 Route::put(
-    '/alcohol/{id}/glasse',
+    '/admin/{id}/glasse',
     [GlassesController::class, 'update']
 )->name('glasse.update');
 
 
-// Alcohol brand 
-
-
+// alcohol brand 
 Route::get(
-    '/alcohol/brand',
+    '/admin/brand',
     [AlcoholBrandController::class, 'index']
 )->name('brand.index');
 
 
 Route::post(    
-    'alcohol/brand',
+    'admin/brand',
     [AlcoholBrandController::class, 'create']
 )->name('brand.create');
 
 
 Route::get(
-    '/alcohol/{id}/brand',
+    '/admin/{id}/brand',
     [AlcoholBrandController::class, 'delete']
 )->name('brand.delete');
 
 
 Route::put(
-    '/alcohol/{id}/brand',
+    '/admin/{id}/brand',
     [AlcoholBrandController::class, 'update']
 )->name('brand.update');
 
@@ -186,3 +189,18 @@ Route::put(
     '/cocktails/{id}',
     [CocktailsController::class, 'add']
 )->name('cocktails.add');
+
+//admin 
+
+Auth::routes();
+
+Route::get(
+    '/', 
+    [App\Http\Controllers\HomeController::class, 'index']
+)->name('auth.login');
+
+
+Route::get(
+    '/alcohol/fruits',
+    [FruitsController::class, 'front']
+)->name('fruits.front');
