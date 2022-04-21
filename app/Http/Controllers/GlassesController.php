@@ -18,7 +18,7 @@ class GlassesController extends Controller
 
         $glasse = Glasses::all();
 
-        return view("alcohol.glasse", compact("glasse"));
+        return view("admin.glasse", compact("glasse"));
     }
     
     public function create(Request $request){

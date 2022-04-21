@@ -17,8 +17,16 @@ class FruitsController extends Controller
 
         $fruits = Fruits::all();
 
+        return view("admin.fruits", compact("fruits"));
+    }
+
+    public function front(){
+
+        $fruits = Fruits::all();
+
         return view("alcohol.fruits", compact("fruits"));
     }
+    
     
     public function create(Request $request){
         
