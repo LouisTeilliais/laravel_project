@@ -16,7 +16,7 @@
             Liste des Cocktails
             </h2>
     </x-slot>
-    <div class = "container" >
+    <div class ="container">
         @if(!is_null($cocktails) && !empty($cocktails))
             @foreach($cocktails as $cocktail)
 
@@ -72,18 +72,6 @@
                 </ul>
             @endforeach
         @endif
-
-
-    <script>
-    let del = document.querySelectorAll("#del");
-    del.forEach(element => {
-        element.addEventListener("click", function(event){
-            alert("Vous êtes sur de vouloir supprimer ?")
-        });
-    });
-
-
-    </script>
 </x-app-layout>
 </body>
 </html>
