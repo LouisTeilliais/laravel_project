@@ -11,7 +11,7 @@
 <body>
 
 <div class = "container navbar" >
-        <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+        <a class="btn btn-light" href=" {{ route('dashboard')}}">Retour au menu</a>
         <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
         <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
         <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>

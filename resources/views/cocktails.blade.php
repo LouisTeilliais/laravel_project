@@ -11,7 +11,7 @@
 <body>
 
     <div class = "container navbar" >
-        <a class="btn btn-light" href=" {{ route('home')}}">Retour au menu</a>
+        <a class="btn btn-light" href=" {{ route('dashboard')}}">Retour au menu</a>
         <a class="btn btn-light" href=" {{ route('sirop.index')}}">Sirops</a>
         <a class="btn btn-light" href=" {{ route('fruits.index')}}">Fruits</a>
         <a class="btn btn-light" href=" {{ route('type.index')}}">Types d'alcools</a>
@@ -29,7 +29,7 @@
         <table class="table align-middle table-light table-bordered table-striped table-hover">
         <thead>
             <tr>
-                <form action=" {{ route('cocktails.create') }}" method="POST">
+                <form action=" {{ route('cocktails.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" placeholder="Nom du cocktail" name="name" required>
                     <select name="glasses" required >
@@ -38,6 +38,7 @@
                             <option value="{{$glasse->id}}">{{$glasse->name}}</option>
                         @endforeach
                     </select>
+                    <input type="file" name="image" >
 
                     <button type="submit" class="btn btn-success"> Ajouter le cocktail </button>
                 </form>
